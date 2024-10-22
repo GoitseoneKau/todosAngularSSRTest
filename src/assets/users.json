@@ -1,0 +1,77 @@
+{
+  "users":
+    [
+      {
+        "id": 1,
+        "firstName": "Emily",
+        "lastName": "Johnson",
+        "email": "emily.johnson@x.dummyjson.com",
+        "phone": "065-431-3024",
+        "password": "emilySpass96*",
+        "userId": 14001
+      },
+      {
+        "id": 2,
+        "firstName": "Michael",
+        "lastName": "Williams",
+        "email": "michael.williams@x.dummyjson.com",
+        "phone": "058-627-6644",
+        "password": "Michael.wpass8",
+        "userId": 14002
+      },
+      {
+        "id": 3,
+        "firstName": "Sophia",
+        "lastName": "Brown",
+        "email": "sophia.brown@x.dummyjson.com",
+        "phone": "010-652-2785",
+        "password": "Sophiabpass5$",
+        "userId": 14003
+      },
+      {
+        "id": 4,
+        "firstName": "James",
+        "lastName": "Davis",
+        "email": "james.davis@x.dummyjson.com",
+        "phone": "014-958-9364",
+        "password": "Jamesd@pass23",
+        "userId": 14004
+      },
+      {
+        "id": 5,
+        "firstName": "Emma",
+        "lastName": "Miller",
+        "email": "emma.miller@x.dummyjson.com",
+        "phone": "059-776-1614",
+        "password": "emmajPass3.",
+        "userId": 14005
+      },
+      {
+        "id": 6,
+        "firstName": "Martin",
+        "lastName": "Kau",
+        "email": "martinkay@gmail.com",
+        "phone": "012-345-6789",
+        "password": "abC12#",
+        "userId": 14006
+      },
+      {
+        "id": 7,
+        "firstName": "Ben",
+        "lastName": "10",
+        "email": "ben10k@gmail.com",
+        "phone": "012 524 9849",
+        "password": "asD12#",
+        "userId": 14008
+      },
+      {
+        "id": 8,
+        "firstName": "Billy",
+        "lastName": "Jean",
+        "email": "billj@example.com",
+        "phone": "012 524 9849",
+        "password": "billyJ12@",
+        "userId": 14009
+      }
+    ]
+}

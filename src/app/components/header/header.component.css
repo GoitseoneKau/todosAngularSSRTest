@@ -1,0 +1,44 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    width: 100%;
+}
+
+.btnOut{
+    background-color: rgb(2, 133, 177);
+    color: white;
+    border: none;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.894);
+}
+
+.btnOut:hover{
+    background-color: rgb(0, 81, 108);
+    color: white;
+
+}
+
+.btnOut:active{
+    background-color: rgba(0, 81, 108, 0.871);
+    color: white;
+    border: 1px groove white;
+}
+
+.Logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    width: 60px;
+    height: 60px;
+    padding:10px;
+    font-weight: bold;
+    border-radius: 200px;
+    border: 0px solid black;
+    box-shadow: 4px 1px 6px 1px  rgba(0, 0, 0, 0.889);
+}

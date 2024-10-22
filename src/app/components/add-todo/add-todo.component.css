@@ -1,0 +1,34 @@
+.addTodo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5px;
+    gap: 20px;
+    height: auto;
+    width: 100%;
+    margin-top: 100px;
+}
+
+
+
+@media screen and (max-width:800px) {
+    form.add-todo-form{
+        min-width: 95%;
+        height: 100%;
+        content: " ";
+        clear: both;
+    }
+
+    .form-group{
+        height: auto;
+    }
+
+    .form-group label{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+

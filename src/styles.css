@@ -1,0 +1,349 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('../node_modules/animate.css/animate.min.css');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.poppins-thin {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .poppins-extralight {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+  }
+  
+  .poppins-light {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .poppins-medium {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  .poppins-bold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .poppins-extrabold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  .poppins-black {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .poppins-thin-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .poppins-extralight-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+  }
+  
+  .poppins-light-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .poppins-regular-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .poppins-medium-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .poppins-semibold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+  }
+  
+  .poppins-bold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .poppins-extrabold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: italic;
+  }
+  
+  .poppins-black-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+
+
+
+
+.app-name-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.app-name-group .slogan,.app-name{
+    text-align: center;
+}
+
+.app-name-group .app-name{
+    font-size: 2.5em;
+}
+
+.app-name-group .slogan{
+    font-weight: 400;
+}
+
+.app-name-group .app-name .app-name-suff{
+    color: rgb(2, 133, 177);
+}
+
+
+  
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 10px;
+  border: 1px solid  rgb(2, 133, 177);
+  width: 50%;
+  height: auto;
+}
+  
+.form-group{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+}
+
+
+
+.form-group label select{
+  width: 60%;
+  height: 30px;
+}
+
+.form-group .greeting{
+  text-align: center;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+div.button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+div.button input[type="submit"]{
+  justify-content: center;
+  width: 50%;
+  height: 40px;
+  background-color:  rgb(2, 133, 177);
+  color: white;
+  border: none;
+}
+
+div.button input[type="submit"]:hover{
+  background-color:  rgb(255, 255, 255);
+  color:  rgb(2, 133, 177);
+  border: 1px solid  rgb(2, 133, 177);
+}
+
+div.button input[type="submit"]:active{
+  background-color:  rgb(0, 75, 103);
+  color:  rgb(255, 255, 255);
+  border: 2px inset  rgb(255, 255, 255);
+}
+
+div.button input[type="submit"]:disabled {
+  background-color:  rgba(2, 133, 177, 0.739);
+  color: rgba(16, 16, 16, 0.3);
+  border-color: rgba(118, 118, 118, 0.3);
+}
+
+div.button button[type="button"]{
+  width: 50%;
+  height: 40px;
+  background-color:  rgb(255, 255, 255);
+  color:  rgb(2, 133, 177);
+  border: 1px solid  rgb(2, 133, 177);
+}
+
+div.button button[type="button"]:hover{  
+  background-color:  rgb(2, 133, 177);
+  color: white;
+  border: none;
+}
+
+div.button button[type="button"]:active{
+  background-color:  rgb(154, 228, 255);
+  color:  rgb(0, 0, 0);
+  border: 2px inset  rgb(255, 255, 255);
+}
+
+div.button p{
+  text-align: center;
+  font-size: .85rem;
+  font-weight: 400;
+}
+
+
+.form-group label{
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 300;
+  gap: 5px;
+  width: 100%;
+  height: 30px;
+}
+
+label input{
+  width: 60%;
+  height: 30px;
+  padding: 2px 3px;
+  border-radius: 1px;
+  border: 0.5px solid;
+}
+
+label input.ng-invalid{
+  border: 0.5px solid red;
+}
+
+label input.ng-valid{
+  border: 0.5px solid green;
+}
+
+.alert{
+  width: 100%;
+  color: red;
+}
+
+.alert div small{
+  font-weight: 400;
+}
+
+@media screen and (max-width:800px) {
+  form.login-form{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 20px 10px;
+      border: 1px solid  rgb(2, 133, 177);
+      width: 80%;
+      content: " ";
+      clear: both;
+  }
+
+  .form-group{
+      height: auto;
+  }
+
+  .form-group label{
+      width: 100%;
+      height: 100%;
+  }
+
+  .form-group label{
+      font-weight: 300;
+      width: 100%;
+      height: 30px;
+  }
+  
+}
+
+@media screen and (max-width:480px) {
+  form.login-form{
+
+      width: 90%;
+      content: " ";
+      clear: both;
+  }
+
+  .form-group{
+      height: auto;
+  }
+
+  .form-group label{
+      flex-direction: column;
+      justify-content:left;
+      align-items: left;
+      width: 100%;
+      height: auto;
+  }
+
+  .form-group label select{
+    width: 100%;
+    height: 30px;
+  }
+
+  label input{
+      width: 100%;
+  }
+  
+}

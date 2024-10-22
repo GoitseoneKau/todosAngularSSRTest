@@ -1,0 +1,356 @@
+{
+  "todos":[
+    {
+      "id": 1,
+      "todo": "Memorize a poem",
+      "priority": "Medium",
+      "priorityColor": "Orange",
+      "dueDate": "2024-10-01T14:00+01:00",
+      "completed": false,
+      "userId": 14002
+    },
+    {
+      "id": 2,
+      "todo": "Memorize a poem",
+      "priority": "Medium",
+      "priorityColor": "Orange",
+      "dueDate": "2024-10-01T14:00+01:00",
+      "completed": false,
+      "userId": 14006
+    },
+    {
+      "id": 3,
+      "todo": "Watch a classic movie",
+      "priority": "Low",
+      "priorityColor": "#eded15",
+      "dueDate": "2024-10-05T14:00+01:00",
+      "completed": false,
+      "userId": 14006
+    },
+    {
+      "id": 4,
+      "todo": "Invest In Crypto",
+      "priority": "Medium",
+      "priorityColor": "Orange",
+      "dueDate": "2024-10-26T14:00+01:00",
+      "completed": false,
+      "userId": 14003
+    },
+    {
+      "id": 5,
+      "todo": "Solve a Rubik's cube",
+      "priority": "High",
+      "priorityColor": "#db0d0d",
+      "dueDate": "2024-10-20T14:00+01:00",
+      "completed": true,
+      "userId": 14002
+    },
+    {
+      "id": 6,
+      "todo": "Solve a Rubik's cube",
+      "priority": "High",
+      "priorityColor": "#db0d0d",
+      "dueDate": "2024-10-20T14:00+01:00",
+      "completed": true,
+      "userId": 14006
+    },
+    {
+      "id": 7,
+      "todo": "Go see a Broadway production",
+      "priority": "Low",
+      "priorityColor": "#eded15",
+      "dueDate": "2024-10-10T14:00+01:00",
+      "completed": false,
+      "userId": 14003
+    },
+    {
+      "id": 8,
+      "todo": "Write a thank you letter to an influential person in your life",
+      "priority": "High",
+      "priorityColor": "#db0d0d",
+      "dueDate": "2024-10-20T14:00+01:00",
+      "completed": true,
+      "userId": 14002
+    },
+    {
+      "id": 9,
+      "todo": "Go see a Broadway production",
+      "priority": "Low",
+      "priorityColor": "#eded15",
+      "dueDate": "2024-10-10T14:00+01:00",
+      "completed": false,
+      "userId": 14006
+    },
+    {
+      "id": 10,
+      "todo": "Memorize a poem",
+      "priority": "Medium",
+      "priorityColor": "Orange",
+      "dueDate": "2024-10-01T14:00+01:00",
+      "completed": true,
+      "userId": 14002
+    },
+    {
+      "id": 11,
+      "todo": "Watch a classic movie",
+      "priority": "Low",
+      "priorityColor": "#eded15",
+      "dueDate": "2024-10-05T14:00+01:00",
+      "completed": true,
+      "userId": 14001
+    },
+    {
+      "id": 12,
+      "todo": "Invest In Crypto",
+      "priority": "Medium",
+      "priorityColor": "Orange",
+      "dueDate": "2024-10-26T14:00+01:00",
+      "completed": false,
+      "userId": 14003
+    },
+    {
+      "id": 13,
+      "todo": "Solve a Rubik's cube",
+      "priority": "High",
+      "priorityColor": "#db0d0d",
+      "dueDate": "2024-10-20T14:00+01:00",
+      "completed": false,
+      "userId": 14006
+    },
+    {
+      "id": 14,
+      "todo": "Write a thank you letter to an influential person in your life",
+      "priority": "High",
+      "priorityColor": "#db0d0d",
+      "dueDate": "2024-10-20T14:00+01:00",
+      "completed": false,
+      "userId": 14002
+    },
+    {
+      "id": 15,
+      "todo": "Go see a Broadway production",
+      "priority": "Low",
+      "priorityColor": "#eded15",
+      "dueDate": "2024-10-10T14:00+01:00",
+      "completed": false,
+      "userId": 14003
+    },
+    {
+      "id": 16,
+      "todo": "Read Lord of The Rings",
+      "priority": "High",
+      "priorityColor": "#db0d0d",
+      "dueDate": "2024-10-20T03:00",
+      "completed": false,
+      "userId": 14006
+    },
+    {
+      "id": 17,
+      "todo": "have drinks with friends @ chikos",
+      "priority": "Low",
+      "dueDate": "2024-10-18T20:00",
+      "userId": 14006,
+      "priorityColor": "#eded15",
+      "completed": false
+    },
+    {
+      "id": 18,
+      "todo": "Solve a Rubik's cube",
+      "priority": "Low",
+      "dueDate": "2024-10-17T22:28",
+      "userId": 14006,
+      "priorityColor": "#eded15",
+      "completed": true
+    },
+    {
+      "id": 19,
+      "todo": "Solve a Rubik's cube",
+      "priority": "Low",
+      "dueDate": "2024-10-18T11:47",
+      "userId": 14008,
+      "priorityColor": "#eded15",
+      "completed": false
+    },
+    {
+      "id": 20,
+      "todo": "have drinks with friends @ BlueRoom",
+      "priority": "Medium",
+      "dueDate": "2024-10-18T20:00",
+      "userId": 14008,
+      "priorityColor": "Orange",
+      "completed": false
+    },
+    {
+      "id": 21,
+      "todo": "Finish task from codeTribe",
+      "priority": "High",
+      "dueDate": "2024-10-17T22:00",
+      "userId": 14008,
+      "priorityColor": "#db0d0d",
+      "completed": false
+    },
+    {
+      "id": 22,
+      "todo": "write custom validators in code",
+      "priority": "High",
+      "dueDate": "2024-10-17T21:50",
+      "userId": 14008,
+      "priorityColor": "#db0d0d",
+      "completed": true
+    },
+    {
+      "id": 23,
+      "todo": "fix css in web",
+      "priority": "Medium",
+      "dueDate": "2024-10-18T06:33",
+      "userId": 14008,
+      "priorityColor": "Orange",
+      "completed": false
+    },
+    {
+      "id": 24,
+      "todo": "Solve a Rubik's cube",
+      "priority": "Low",
+      "dueDate": "2024-10-19T15:28",
+      "userId": 14009,
+      "priorityColor": "#eded15",
+      "completed": false
+    },
+    {
+      "id": 25,
+      "todo": "Play sumo slammers",
+      "priority": "High",
+      "dueDate": "2024-10-19T07:30",
+      "userId": 14008,
+      "priorityColor": "#db0d0d",
+      "completed": false
+    },
+    {
+      "id": 26,
+      "todo": "Ask Gwen for math homework",
+      "priority": "Low",
+      "dueDate": "2024-10-20T02:43",
+      "userId": 14008,
+      "priorityColor": "#eded15",
+      "completed": false
+    },
+    {
+      "id": 27,
+      "todo": "Babysit sisters cat",
+      "priority": "Medium",
+      "dueDate": "2024-10-19T20:00",
+      "userId": 14005,
+      "priorityColor": "Orange",
+      "completed": false
+    },
+    {
+      "id": 28,
+      "todo": "Go on drive to cancoun",
+      "priority": "High",
+      "dueDate": "2024-10-30T17:00",
+      "userId": 14004,
+      "priorityColor": "#db0d0d",
+      "completed": false
+    },
+    {
+      "id": 29,
+      "todo": "Get hair done Asap",
+      "priority": "High",
+      "dueDate": "2024-10-18T07:30",
+      "userId": 14003,
+      "priorityColor": "#db0d0d",
+      "completed": false
+    },
+    {
+      "id": 30,
+      "todo": "Solve a Rubik's cube",
+      "priority": "Low",
+      "dueDate": "2024-10-19T06:57",
+      "userId": 14003,
+      "priorityColor": "#eded15",
+      "completed": false
+    },
+    {
+      "id": 31,
+      "todo": "Practice guitar with band",
+      "priority": "Medium",
+      "dueDate": "2024-10-20T20:55",
+      "userId": 14002,
+      "priorityColor": "Orange",
+      "completed": false
+    },
+    {
+      "id": 32,
+      "todo": "hhyg @ 7 ",
+      "priority": "High",
+      "dueDate": "2024-10-22T02:58",
+      "userId": 14002,
+      "priorityColor": "#db0d0d",
+      "completed": false
+    },
+    {
+      "id": 33,
+      "todo": "hhyg @ 7 ",
+      "priority": "Medium",
+      "dueDate": "2024-10-22T17:59",
+      "userId": 14002,
+      "priorityColor": "Orange",
+      "completed": false
+    },
+    {
+      "id": 34,
+      "todo": "Solve a Rubik's cube",
+      "priority": "Low",
+      "dueDate": "2024-10-21T03:00",
+      "userId": 14002,
+      "priorityColor": "#eded15",
+      "completed": false
+    },
+    {
+      "id": 35,
+      "todo": "hhyg @ 7 ",
+      "priority": "Medium",
+      "dueDate": "2024-10-19T20:03",
+      "userId": 14001,
+      "priorityColor": "Orange",
+      "completed": false
+    },
+    {
+      "id": 36,
+      "todo": "Solve a Rubik's cube",
+      "priority": "Medium",
+      "dueDate": "2024-10-24T08:05",
+      "userId": 14001,
+      "priorityColor": "Orange",
+      "completed": false
+    },
+    {
+      "id": 37,
+      "todo": "Solve a Rubik's cube",
+      "priority": "High",
+      "dueDate": "2024-10-18T06:27",
+      "userId": 14001,
+      "priorityColor": "#db0d0d",
+      "completed": false
+    },
+    {
+      "id": 38,
+      "todo": "Solve a Rubik's cube",
+      "priority": "Low",
+      "dueDate": "2024-10-25T19:30",
+      "userId": 14001,
+      "priorityColor": "#eded15",
+      "completed": false
+    },
+    {
+      "id": 39,
+      "todo": "drink with marci",
+      "priority": "Medium",
+      "dueDate": "2024-10-19T20:45",
+      "userId": 14006,
+      "priorityColor": "Orange",
+      "completed": false
+    }
+  ]
+
+}

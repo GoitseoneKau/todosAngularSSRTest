@@ -1,0 +1,72 @@
+.PageNotFound{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 90%;
+}
+
+.PageNotFound .NotFoundMessage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+    font-weight: 400;
+}
+
+.app-name-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.slogan,.app-name{
+    text-align: center;
+}
+
+.app-name{
+    font-size: 2.5em;
+}
+
+.slogan{
+    font-weight: 400;
+}
+
+.app-name .app-name-suff{
+    color: rgb(2, 133, 177);
+}
+
+.button-group{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+    width:100%
+}
+
+.button-group button.btnRedirect{
+    width:30%;
+    padding:20px;
+    background-color:  rgb(2, 133, 177);
+    color: white;
+    border: .1rem solid  rgb(2, 133, 177);
+    font-size: 1.2rem;
+}
+
+
+.button-group button.btnRedirect:hover{
+    background-color:  rgb(255, 255, 255);
+    color:  rgb(2, 133, 177);
+    border: .1rem solid  rgb(2, 133, 177);
+}
+
+.button-group button.btnRedirect:active{
+    background-color:  rgb(0, 75, 103);
+    color:  rgb(255, 255, 255);
+    border: 2px inset  rgb(255, 255, 255);
+}
+

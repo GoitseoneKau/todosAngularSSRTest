@@ -1,0 +1,180 @@
+<ng-container *ngIf="isLoggedIn" >
+<div class="list" *ngIf="Todos" >
+   <!-- greetings banner -->
+  <div *ngIf="user" class="greetings">
+    <h3>Hello</h3>
+    <h4> {{user.firstName}} {{user.lastName}}</h4>
+  </div>
+  <div class="date">Today's Date: <br> {{todayDate|date}}</div>
+ <div class="filterGroup">
+  <div class="filterSelectors">
+     <!-- filter input for High/Medium/Low results -->
+    <div  class="group-input">
+      <label for="priority">Priority:</label>
+  
+      <select name="priority" id="priority"  (ngModelChange)="updatePriority($event)"  [(ngModel)]="search">
+        <option value="All" selected>All</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+    </div>
+    <!-- filter input for incomplete/complete results -->
+    <div class="group-input">
+      <label for="Status">Status:</label>
+  
+      <select name="Status" id="Status" (ngModelChange)="updateStatus($event)"  [(ngModel)]="completeFilter">
+        <option value="All" selected>All</option>
+        <option [value]="true">complete</option>
+        <option [value]="false">Incomplete</option>
+      </select>
+    </div>
+  </div>
+  <div class="group-button">
+    <button class="btnAdd" (click)="addTodo()">add Todo</button>
+  </div>
+ </div>
+ <!-- filter results by complete or incomplete -->
+ <ng-container *ngIf="search=='All';else filter">
+  <div class="todo-list">
+
+    <h1>High Priority</h1>
+
+    <div *ngIf="isHighZero" class="noNote" ><p class="poppins-medium">No todos</p></div>
+
+    <ng-container *ngFor="let todo of Todos">
+
+      <todo-item  *ngIf="todo.priority=='High'"
+  
+      [todo]="todo"
+      (onEdit)="editTodo(todo)"
+      (onCheck)="checkTodo(todo)"
+      (onDelete)="deleteTodo(todo)"
+      >
+      
+      </todo-item>
+    
+    </ng-container>
+    
+ </div>
+
+  <div  class="todo-list" >
+      <h1>Medium Priority</h1>
+      
+      <div  *ngIf="isMedZero" class="noNote" >
+        <p class="poppins-medium">No todos</p>
+      </div>
+
+      <ng-container *ngFor="let todo of Todos">
+
+        <todo-item  *ngIf="todo.priority=='Medium'"
+      
+        [todo]="todo"
+        (onEdit)="editTodo(todo)"
+        (onCheck)="checkTodo(todo)"
+      (onDelete)="deleteTodo(todo)">
+        
+        </todo-item>
+      
+      </ng-container>
+      
+  </div>
+
+  <div  class="todo-list"  >
+      <h1>Low Priority</h1>
+
+      <div  *ngIf="isLowZero" class="noNote"><p class="poppins-medium">No todos</p></div>
+
+      <ng-container *ngFor="let todo of Todos">
+
+        <todo-item  *ngIf="todo.priority=='Low'"
+      
+        [todo]="todo"
+        (onEdit)="editTodo(todo)"
+        (onCheck)="checkTodo(todo)"
+        (onDelete)="deleteTodo(todo)">
+        
+        </todo-item>
+      
+      </ng-container>
+     
+  </div>
+ </ng-container>
+<!-- filter results by High,Medium,Low -->
+   <ng-template #filter>  
+    <div class="todo-list" *ngIf="search=='High'">
+
+      <h1>High Priority</h1>
+
+      <div *ngIf="isHighZero" class="noNote" ><p class="poppins-medium">No todos</p></div>
+
+      <ng-container *ngFor="let todo of Todos">
+  
+        <todo-item  *ngIf="todo.priority==search"
+       
+        [todo]="todo"
+        (onEdit)="editTodo(todo)"
+        (onCheck)="checkTodo(todo)"
+        (onDelete)="deleteTodo(todo)"
+        >
+        
+        </todo-item>
+      
+      </ng-container>
+ 
+   </div>
+
+
+    <div  class="todo-list"  *ngIf="search=='Medium'">
+
+        <h1>Medium Priority</h1>
+
+        <div  *ngIf="isMedZero" class="noNote" >
+          <p class="poppins-medium">No todos</p>
+        </div>
+
+        <ng-container *ngFor="let todo of Todos">
+  
+          <todo-item  *ngIf="todo.priority==search"
+   
+          [todo]="todo"
+          (onEdit)="editTodo(todo)"
+          (onCheck)="checkTodo(todo)"
+          (onDelete)="deleteTodo(todo)">
+          
+          </todo-item>
+        
+        </ng-container>
+
+     
+      </div>
+
+    
+
+    <div  class="todo-list"  *ngIf="search=='Low';">
+        <h1>Low Priority</h1>
+
+        <div  *ngIf="isLowZero" class="noNote"><p class="poppins-medium">No todos</p></div>
+
+        <ng-container  *ngFor="let todo of Todos">
+  
+          <todo-item  *ngIf="todo.priority==search"
+     
+          [todo]="todo"
+          (onEdit)="editTodo(todo)"
+          (onCheck)="checkTodo(todo)"
+          (onDelete)="deleteTodo(todo)">
+          
+          </todo-item>
+          
+        </ng-container>
+
+       
+    </div>
+    
+
+   </ng-template>
+   
+</div>
+
+</ng-container>

@@ -1,0 +1,26 @@
+.editTodo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5px;
+    gap: 20px;
+    height: 90%;
+    width: 100%;
+}
+
+
+.edit-todo-form{
+    width: 80%;
+}
+
+
+@media screen and (max-width:600px) {
+    .edit-todo-form{
+        width: 95%;
+    }
+}
+
+
+
+

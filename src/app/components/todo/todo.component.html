@@ -1,0 +1,34 @@
+<div #item  class="todo-item" [ngStyle]="{'border-color':todo.priorityColor}" >
+
+    <div class="priority poppins-medium" [ngStyle]="{'background-color':todo.priorityColor}">
+        <p>{{todo.priority}}</p>
+    </div>
+
+    <div class="todo-text" >
+        <p [ngClass]="{strikethrough:todo.completed,overDue:overDueCheck(todo)}">{{todo.todo}}</p>
+        <div class="dateTime">
+            <p>Time: {{todo.dueDate|date:'shortTime'}} </p>
+            <p>Due: {{todo.dueDate|date }}</p>
+            <p class="Overdue-text" *ngIf="overDueCheck(todo)">Overdue</p>
+        </div>
+    </div>
+
+    <div class="editingButton">
+        <span title="edit" class="btnEdit" (click)="onEditTodo(todo)" >
+            <i class="fa-solid fa-pencil fa-xl" ></i>
+        </span>
+    </div>
+    <div class="completedCheckbox">
+        <label for="completed"></label>
+        <input type="checkbox" 
+        title="complete" name="completed" [disabled]="overDueCheck(todo)"  (change)="onCheckTodo(todo)"
+        id="completed" [checked]="todo.completed">
+    </div>
+
+   <div class="deletingButton">
+        <span title="delete" class="btnDelete" (click)="onDeleteTodo(todo)" >
+            <i class="fa-solid fa-trash fa-xl" ></i>
+        </span>
+    </div>
+ 
+</div>

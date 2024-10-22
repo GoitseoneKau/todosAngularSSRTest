@@ -1,0 +1,36 @@
+.footer{
+    padding: 5px;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20%;
+}
+
+.footer .footer-text{
+    text-align: center;
+    font-weight: 500;
+}
+
+@media screen and (min-width:480px) and (min-height:1000px){
+    .footer{
+        margin-top: 0%;
+    }
+    
+}
+
+
+@media screen and (min-width:1000px) and (min-height:800px){
+    .footer{
+        margin-top: 0%;
+    }
+    
+}
+
+@media screen and (min-width:700px) and (min-height:1000px){
+    .footer{
+        margin-top: -40%;
+    }
+    
+}
