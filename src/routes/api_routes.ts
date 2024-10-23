@@ -1,8 +1,8 @@
 import express from "express";
 import users from '../assets/users.json'
 import todos from '../assets/todos.json'
-import { Todo } from "../app/types/todo";
-import { User } from "../app/types/user";
+// import { Todo } from "../app/types/todo";
+// import { User } from "../app/types/user";
 
 
 
@@ -15,7 +15,6 @@ router.use(express.json())
 
 //get all
 router.get('/users', (request,response)=>{//get is a request fuction from client
-
     response.json(users.users)//response to client, in json
 })
 
@@ -26,11 +25,11 @@ router.get('/users/:id',(request,response)=>{//get is a request fuction from cli
     response.json(users.users.find((user: { id: number; })=>user.id===id))//response to client, in json
 })
 
-
 //post a new user
 router.post('/users',(request,response)=>{//get is a request fuction from client
-    let user = request.body.user
-    user.id = users.users?.length+1
+ 
+    let user = request.body
+    user.id = users.users.length+1
 
     if(user){
         users.users.push(user)
@@ -40,7 +39,7 @@ router.post('/users',(request,response)=>{//get is a request fuction from client
 
 //update a user
 router.put('/users/:id',(request,response)=>{//get is a request fuction from client
-    let user = request.body as User
+    let user = request.body
     let id = parseInt(request.params.id)
     if(user){
         const userToUpdate = users.users.find((user: { id: number; })=>user.id===id)
@@ -100,9 +99,9 @@ router.get('/todos/:id',(request,response)=>{//get is a request fuction from cli
 
 //post a new todo
 router.post('/todos',(request,response)=>{//get is a request fuction from client
-    let todo = request.body.todo
-    todo.id = todos.todos?.length+1
-
+    let todo = request.body
+    todo.id = todos.todos.length+1
+   
     todos.todos.push(todo)
     response.json(todos.todos)//201 'Created' - Indicates that the request has succeeded and a new resource has been created as a result.
     
@@ -119,7 +118,7 @@ router.put('/todos/:id',(request,response)=>{//get is a request fuction from cli
             todoToUpdate.todo =todo.todo
             todoToUpdate.priority =todo.priority
             todoToUpdate.priorityColor =todo.priorityColor
-          todoToUpdate.dueDate = todo.dueDate
+            todoToUpdate.dueDate = todo.dueDate.toString()
             todoToUpdate.completed =todo.completed
       
             response.json(todos.todos)//201 'Created' - Indicates that the request has succeeded and a new resource has been created as a result.
@@ -159,3 +158,5 @@ router.delete('/todos/:id',(request,response)=>{//get is a request fuction from 
 
 
 export default router;
+
+

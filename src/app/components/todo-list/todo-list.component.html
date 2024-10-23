@@ -34,13 +34,16 @@
     <button class="btnAdd" (click)="addTodo()">add Todo</button>
   </div>
  </div>
- <!-- filter results by complete or incomplete -->
- <ng-container *ngIf="search=='All';else filter">
+ <!-- filter results by High,Medium,Low -->
+ <ng-container *ngIf="search=='All';else completefilter">
+ <!-- show priority todos despite status -->
   <div class="todo-list">
 
     <h1>High Priority</h1>
 
-    <div *ngIf="isHighZero" class="noNote" ><p class="poppins-medium">No todos</p></div>
+    <div *ngIf="isHighZero" class="noNote" >
+      <p class="poppins-medium">No todos</p>
+    </div>
 
     <ng-container *ngFor="let todo of Todos">
 
@@ -83,7 +86,9 @@
   <div  class="todo-list"  >
       <h1>Low Priority</h1>
 
-      <div  *ngIf="isLowZero" class="noNote"><p class="poppins-medium">No todos</p></div>
+      <div  *ngIf="isLowZero" class="noNote">
+        <p class="poppins-medium">No todos</p>
+      </div>
 
       <ng-container *ngFor="let todo of Todos">
 
@@ -100,8 +105,10 @@
      
   </div>
  </ng-container>
-<!-- filter results by High,Medium,Low -->
-   <ng-template #filter>  
+
+ <!-- filter results by complete or incomplete -->
+   <ng-template #completefilter>  
+     <!-- show status todos while showing priority change -->
     <div class="todo-list" *ngIf="search=='High'">
 
       <h1>High Priority</h1>

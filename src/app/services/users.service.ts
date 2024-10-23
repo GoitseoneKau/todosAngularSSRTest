@@ -10,13 +10,13 @@ import { HttpClient } from '@angular/common/http';
 export class UsersService {
 
   private url:string = "/api/users"
-  private dummyURL = "/api/users"
+
 
   usersBehaviour = new BehaviorSubject<User[]>([])
 
   constructor(private https:HttpClient) { }
   getMessage(){
-    return this.https.get(this.dummyURL)
+    return this.https.get(this.url)
   }
 
   getUsers():Observable<User[]>{

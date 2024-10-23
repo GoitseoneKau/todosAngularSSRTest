@@ -70,9 +70,6 @@ userExistMessage:string=""//empty message for user not existing
   }
 
 
-  getNextId(obj:any){
-    return (Math.max.apply(Math,obj.map((o: { id: number })=>o.id))+1);//create unique user id number looping through object 
-  }
 
   getNextUserId(obj:any){
     return (Math.max.apply(Math,obj.map((o: { userId: number })=>o.userId))+1);//create unique userid number looping through object 
@@ -81,16 +78,9 @@ userExistMessage:string=""//empty message for user not existing
   signUp(){//function for signing up/registering user
 
     //take in form values into single user variable
-    this.userInfo={
-      firstName: this.signupForm.get('firstName')?.value,
-      lastName: this.signupForm.get('lastName')?.value,
-      email: this.signupForm.get('email')?.value,
-      phone: this.signupForm.get('phone')?.value,
-      password:this.signupForm.get('password')?.value,
-      id:this.getNextId(this.Users),
-      userId :this.getNextUserId(this.Users)
-    };
-  
+    this.userInfo= this.signupForm.value as User
+    this.userInfo.userId = this.getNextUserId(this.Users)
+    console.log(this.userInfo)
     if(this.checkUserExists(this.userInfo)){//check if the user exists
        this.userExistMessage="user already exists"
     }else{//if not already existing, put them inside the databse

@@ -12,8 +12,7 @@ export const routes: Routes = [
     {path:"todos/:uid",component:TodoListComponent,canActivate:[RouteGuardService]},
     {path:"signup",component:SignupComponent},
     {path:"edit/:id",component:EditTodoComponent,canActivate:[RouteGuardService]},
-    {path:"add/:uid",component:AddTodoComponent,canActivate:[RouteGuardService]}
-    // ,
-    // {path:"**",component:NotFoundComponent}
+    {path:"add/:uid",component:AddTodoComponent,canActivate:[RouteGuardService]},
+    {path:"**",component:NotFoundComponent}
    
 ];
