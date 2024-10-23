@@ -1,0 +1,13 @@
+{
+    "version": 2,
+    "public": true,
+    "name": "DailyTodoApp",
+    "rewrites": [
+      { "source": "/(.*)", "destination": "/api" }
+    ],
+    "functions": {
+      "api/index.js": {
+        "includeFiles": "dist/todo-app/browser/**"
+      }
+    }
+  }
