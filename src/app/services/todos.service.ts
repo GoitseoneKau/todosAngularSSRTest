@@ -8,7 +8,7 @@ import { Todo } from '../types/todo';
 })
 export class TodosService {
 
-private url:string = "/api/todos"
+private url:string = "http://localhost:4000/api/todos"
   constructor(private https:HttpClient) { }
 
   getTodos():Observable<Todo[]>{
