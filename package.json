@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:todoAppEg": "node dist/todo-app/server/server.mjs",
-      "build:ssr": "ng build && ng run test:server"
+      "build:ssr": "ng build && npm run test:server"
   },
   "private": true,
   "dependencies": {
