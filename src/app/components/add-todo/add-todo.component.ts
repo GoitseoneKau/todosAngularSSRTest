@@ -51,9 +51,9 @@ export class AddTodoComponent {
 
     ngOnInit(){
       this.userId = this.activeRoute.snapshot.paramMap.get('uid')//get user unique id
-      const getTodos = this.todoService.getTodos().subscribe((todos)=>this.todos = todos)//get todo
-    
+     this.todoService.getTodos().subscribe((todos)=>this.todos = todos)//get todo
     }
+    
 
     getNextId(obj:any){
       return (Math.max.apply(Math,obj.map((o: { id: number })=>o.id))+1);///get next id from array/object list
@@ -63,9 +63,7 @@ export class AddTodoComponent {
       let color=""
 
       if(priority=="High"){   color="#db0d0d" }
-
       if(priority=="Medium"){ color="Orange"  }
-
       if(priority=="Low"){    color="#eded15" }
 
       return color

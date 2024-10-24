@@ -8,15 +8,14 @@ export class UserEmailValidator {
 
         return (control: AbstractControl): Observable<ValidationErrors | null> => {
           const email = control.value as string;
-      
-          return userService.getUser(email).pipe(
-            map((user) => {
-              // test if email is already registered
-              const isTaken = email !== user.email ? true : false;
-              return isTaken ? { emailTaken: true } : null;
-            }),
-            catchError(() => of(null)) // In case of an error, we assume the email is available.
-          );
+          const user = userService.getUsers().pipe(map((users)=>{
+            if(users.find((user)=>user.email===email)){
+              return true ? {userExists:true}:null;
+            }
+            return {userExists:false};
+          }),
+          catchError(() => of(null)))
+          return user;
         };
     }
 

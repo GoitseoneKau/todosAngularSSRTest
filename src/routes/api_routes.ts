@@ -118,7 +118,7 @@ router.put('/todos/:id',(request,response)=>{//get is a request fuction from cli
             todoToUpdate.todo =todo.todo
             todoToUpdate.priority =todo.priority
             todoToUpdate.priorityColor =todo.priorityColor
-            todoToUpdate.dueDate = todo.dueDate.toString()
+            todoToUpdate.dueDate = todo.dueDate
             todoToUpdate.completed =todo.completed
       
             response.json(todos.todos)//201 'Created' - Indicates that the request has succeeded and a new resource has been created as a result.

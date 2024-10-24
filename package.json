@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:todoAppEg": "node dist/todo-app/server/server.mjs",
-      "build:ssr": "ng build && npm run test:server"
+    "build:ssr": "npm run serve:ssr:todoAppEg"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +26,7 @@
     "animate.css": "^4.1.1",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "json-server": "^1.0.0-beta.3",
     "ngx-bootstrap": "^18.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

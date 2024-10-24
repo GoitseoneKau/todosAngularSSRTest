@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UsersService {
 
-  private url:string = "http://localhost:4000/api/users"
+  private url:string = "http://localhost:4000/api/users" 
 
 
   usersBehaviour = new BehaviorSubject<User[]>([])

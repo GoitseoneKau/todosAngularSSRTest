@@ -89,9 +89,6 @@ userExistMessage:string=""//empty message for user not existing
       uploadUser.subscribe(()=> this.router.navigate(['/'],{replaceUrl:true}))//redirect to login page
     }
     
-
-
-   
   }
 
   checkUserExists(u:User):boolean{//function to check if user exists

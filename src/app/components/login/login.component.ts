@@ -70,7 +70,6 @@ export class LoginComponent {
         this.destroyRef.onDestroy(()=>{
           this.UserService.getUsers().subscribe((data)=>{
             this.users = data
-            console.log(data)
           }).unsubscribe()
         })
         this.router.navigate(["/todos",this.testUser?.id],{ replaceUrl: true })//navigate to user todos page
