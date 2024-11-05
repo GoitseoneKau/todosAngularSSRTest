@@ -3,7 +3,9 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 90%;
+    gap:30px;
+    margin:5% 0;
+    height: 100%;
 }
 
 .PageNotFound .NotFoundMessage{
@@ -12,6 +14,7 @@
     align-items: center;
     padding: 5%;
     font-weight: 400;
+    font-size: 18px;
 }
 
 .app-name-group{
@@ -21,7 +24,6 @@
     align-items: center;
     gap: 5px;
     width: 100%;
-    margin-bottom: 50px;
 }
 
 .slogan,.app-name{
@@ -48,6 +50,8 @@
     width:100%
 }
 
+
+/* redirect button styling */
 .button-group button.btnRedirect{
     width:30%;
     padding:20px;
@@ -70,3 +74,13 @@
     border: 2px inset  rgb(255, 255, 255);
 }
 
+
+/* cover general phone sizes */
+@media screen and (max-width:450px) {
+    .PageNotFound{
+        margin:30% 0;
+    }
+    .button-group button.btnRedirect{
+        width:60%;
+    }
+}

@@ -34,6 +34,7 @@ export function app(): express.Express {
     commonEngine
       .render({
         bootstrap,
+        inlineCriticalCss: false,
         documentFilePath: indexHtml,
         url: `${protocol}://${headers.host}${originalUrl}`,
         publicPath: browserDistFolder,
@@ -46,7 +47,7 @@ export function app(): express.Express {
   return server;
 }
 
-function run(): void {
+export function run(): void {
   const port =  4000;
 
   // Start up the Node server

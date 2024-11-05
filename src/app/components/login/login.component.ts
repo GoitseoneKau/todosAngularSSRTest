@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { User } from '../../types/user';
 import { PasswordValidator } from '../../customValidators/password-validator';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ import { PasswordValidator } from '../../customValidators/password-validator';
 export class LoginComponent {
   loginForm!:FormGroup//variable cclass to access login form
   private users:User[]=[]
+  subscribeUser!:Subscription
   testUser: User | undefined;
   message:string=""
   loggedIn!: boolean;
@@ -32,7 +34,7 @@ export class LoginComponent {
     this.loginForm = this.fb.group({
       email: new FormControl("",[
         Validators.required,
-        Validators.pattern("[\\w-\\.]+@([\\w]+\.)+[\\w]{2,4}")
+        Validators.pattern("[\\w-\\.]+@([\\w]+\.)+[\\w]{2,4}")//regex email validator
       ]),
       password:new FormControl("",[
         Validators.required,
@@ -42,21 +44,29 @@ export class LoginComponent {
 
   }
 
+  //component initialized
   ngOnInit(){
-    this.UserService.getUsers().subscribe((data)=>{
+    //subscribe to user service
+   this.subscribeUser =  this.UserService.getUsers().subscribe((data)=>{
       this.users = data
-      console.log(data)
     })
-
-    this.UserService.getMessage().subscribe(response=>console.log("from internal api",response))
   }
 
-  checkUser(user:User):User|undefined{//check if user exists by email
+
+  //component destroyed
+  ngOnDestroy(){
+    //unsubscribe to user service
+    this.subscribeUser.unsubscribe()
+  }
+
+  //check if user exists by email
+  checkUser(user:User):User|undefined{
     this.testUser = this.users.find(d=> d.email == user.email )
     return  this.testUser
   }
 
-  checkUserPassword(user:User):User|undefined{//check if user exists by password
+  //check if user exists by password
+  checkUserPassword(user:User):User|undefined{
     return  this.testUser = this.users.find(d=>d.email==user.email && d.password==user.password )
   }
 
@@ -72,7 +82,8 @@ export class LoginComponent {
             this.users = data
           }).unsubscribe()
         })
-        this.router.navigate(["/todos",this.testUser?.id],{ replaceUrl: true })//navigate to user todos page
+        //navigate to user todos page
+        this.router.navigate(["/todos",this.testUser?.id],{ replaceUrl: true })
       }else{//else user does not login and send message to check password
         this.loggedIn = this.loginService.isLoggedIn();
         this.message = "login failed. Check your password"

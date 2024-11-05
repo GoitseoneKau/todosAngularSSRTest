@@ -7,9 +7,25 @@
     gap: 20px;
     width: 100%;
     height: 90%;
+    margin: 2.5% 0
 }
 
-
+.signup-success{
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    padding: 10px 5px;
+    width: 80%;
+    height: 3em;
+    background-color:  rgba(2, 177, 75, 0.079);
+    color: white;
+    border: 1px solid rgb(2, 177, 75);
+}
+.signup-success p{
+    text-align: center;
+    color:rgb(2, 177, 75);
+    width: 100%;
+}
 
 @media screen and (max-width:800px) {
     form.signup-form{
@@ -38,3 +54,31 @@
     }
 }
 
+
+@media screen and (min-width:480px) and (min-height:1000px){
+    .signup{
+        gap: 50px;
+        height: 100%;
+        margin: 15% 0
+    }
+    
+}
+
+
+@media screen and (min-width:1000px) and (min-height:800px){
+    .signup{
+        gap: 50px;
+        height: 100%;
+        margin: 15% 0
+    }
+    
+}
+
+@media screen and (min-width:700px) and (min-height:1000px){
+    .signup{
+        gap: 50px;
+        height: 100%;
+        margin: 15% 0
+    }
+    
+}

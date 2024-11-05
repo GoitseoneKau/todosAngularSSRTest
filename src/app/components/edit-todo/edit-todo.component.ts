@@ -61,7 +61,7 @@ export class EditTodoComponent {
       priority: new FormControl('', [Validators.required]), //this.dp.transform(todo.dueDate,"yyyy-MM-ddThh:mm:ss")
       dueDate: new FormControl('', [
         Validators.required,
-        MinDateValidator.dateMin(this.minDate), //custom date validator
+        MinDateValidator.dateMin(), //custom date validator
       ]),
     });
   }

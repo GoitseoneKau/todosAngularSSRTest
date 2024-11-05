@@ -82,11 +82,11 @@
     
         <div class="form-group">
             <label for="password">Password :
-            <input  [class.ng-invalid]="signupForm.get('password')?.touched"
-                    type="password" id="password"  name="password"
-                    formControlName="password" 
-            >
-        </label>
+                <input  [class.ng-invalid]="signupForm.get('password')?.touched"
+                        type="password" id="password"  name="password"
+                        formControlName="password" 
+                >
+            </label>
             <div class="alert" *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.invalid">
                 <div *ngIf="signupForm.get('password')?.errors?.['required'] ">
                   <small>  password is required</small>
@@ -136,12 +136,29 @@
     
     
         <div class="button">
-            <input [disabled]="!signupForm.valid"  type="submit" id="submit" value="signup" />
+            <button  [class.display-none]="signedUp" [disabled]="!signupForm.valid"  type="submit" id="submit" >
+                signup
+            </button>
+            <div  [class.signup-success]="signedUp" class="display-none">
+                <p class=" poppins-regular">User Signed Up. Please click the 'Back to Login'<i class="fa-solid fa-check fa-lg"></i></p>
+            </div>
         </div>
         <div class="button">
             <p class="poppins-extralight">Already a registered User?</p>
             <button type="button" (click)="backToLogin()">Back To LogIn</button>
         </div>
     </form>
+
+    
 </div>
  
+ <!-- sign up  loading spinner -->
+ <ngx-spinner 
+ type="ball-clip-rotate-pulse" 
+ size="default"
+ [bdColor]="bdcolor"
+ [color]="ani_color" 
+ size="medium"
+ [fullScreen]="false" >
+     <p > {{loadingMessage}} </p>
+</ngx-spinner>

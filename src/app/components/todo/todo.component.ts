@@ -43,8 +43,7 @@ export class TodoComponent {
   }
 
   onDeleteTodo(todo:Todo){
-     this.item.nativeElement.classList.add("animate__animated","animate__slideOutRight")
-     setTimeout(()=>{},1000)
+    this.item.nativeElement.classList.add("animate__animated","animate__slideOutRight")
     this.onDelete.emit(todo)
   }
 

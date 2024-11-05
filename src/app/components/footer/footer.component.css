@@ -1,11 +1,13 @@
 .footer{
     padding: 5px;
-    height: 10%;
+    height: 5em;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-top: 20%;
+    margin-top: 2%;
+    position: relative;
+    bottom: 0;
 }
 
 .footer .footer-text{
@@ -15,7 +17,7 @@
 
 @media screen and (min-width:480px) and (min-height:1000px){
     .footer{
-        margin-top: 0%;
+        margin-top: 10%;
     }
     
 }
@@ -23,14 +25,14 @@
 
 @media screen and (min-width:1000px) and (min-height:800px){
     .footer{
-        margin-top: 0%;
+        margin-top: 10%;
     }
     
 }
 
 @media screen and (min-width:700px) and (min-height:1000px){
     .footer{
-        margin-top: -40%;
+        margin-top:10%;
     }
     
 }

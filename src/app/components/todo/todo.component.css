@@ -5,7 +5,7 @@
     align-items: center;
     gap: 10px;
     background-color: white;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     box-shadow: 3px 3px 1px 1px rgb(193, 188, 188);
     height: 150px;
     min-width: 280px;
@@ -108,8 +108,8 @@
     width: 80px;
     height: 100%;
     text-align: center;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    /* border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px; */
 }
 
 .deletingButton{
@@ -170,7 +170,7 @@
     /* border: 2px dashed red; */
     box-shadow: 1px 1px 1px .5px red ,1px 1px 2px red inset ;
     text-align: center;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     width:100%;
     height: min-content;
 }

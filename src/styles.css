@@ -2,14 +2,18 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('../node_modules/animate.css/animate.min.css');
+@import url('../node_modules/@fortawesome/fontawesome-free/css/all.min.css');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    clear: both;
+    content: "";
 }
 
 body{
-    height: 100vh;
+    height: 100%;
     font-family: "Poppins", sans-serif;
     font-weight: 100;
     font-style: normal;
@@ -123,7 +127,9 @@ body{
     font-style: italic;
   }
 
-
+.display-none{
+  display: none;
+}
 
 
 .app-name-group{
@@ -133,7 +139,7 @@ body{
     align-items: center;
     gap: 5px;
     width: 100%;
-    margin-bottom: 50px;
+    margin-bottom: 2%;
 }
 
 .app-name-group .slogan,.app-name{
@@ -197,7 +203,7 @@ div.button{
   width: 100%;
 }
 
-div.button input[type="submit"]{
+div.button input[type="submit"],button[type="submit"]{
   justify-content: center;
   width: 50%;
   height: 40px;
@@ -206,19 +212,19 @@ div.button input[type="submit"]{
   border: none;
 }
 
-div.button input[type="submit"]:hover{
+div.button input[type="submit"]:hover, button[type="submit"]:hover{
   background-color:  rgb(255, 255, 255);
   color:  rgb(2, 133, 177);
   border: 1px solid  rgb(2, 133, 177);
 }
 
-div.button input[type="submit"]:active{
+div.button input[type="submit"]:active, button[type="submit"]:active{
   background-color:  rgb(0, 75, 103);
   color:  rgb(255, 255, 255);
   border: 2px inset  rgb(255, 255, 255);
 }
 
-div.button input[type="submit"]:disabled {
+div.button input[type="submit"]:disabled, button[type="submit"]:disabled {
   background-color:  rgba(2, 133, 177, 0.739);
   color: rgba(16, 16, 16, 0.3);
   border-color: rgba(118, 118, 118, 0.3);
@@ -255,6 +261,7 @@ div.button p{
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
+  text-align: left;
   font-weight: 300;
   gap: 5px;
   width: 100%;
