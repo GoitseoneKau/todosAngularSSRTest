@@ -1,13 +1,18 @@
 {
     "version": 1,
     "public": true,
+    "framework":"angular",
     "name": "DailyTodoApp",
+    "installCommand": "npm install",
+    "buildCommand":"npm run build",
+    "outputDirectory": "dist",
     "rewrites": [
-      { "source": "(.*)", "destination": "/api" }
+      { "source": "/api", "destination": "/api/users" },
+      { "source": "/api", "destination": "/api/todos" }
     ],
     "functions": {
       "api/index.js": {
-        "includeFiles":["dist/todo-app/server/**"]
+        "includeFiles":"dist/todo-app/server/**"
       }
     }
   }
