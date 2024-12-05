@@ -3,7 +3,7 @@ export interface Todo {
   todo:string,
   priority:string,
   priorityColor:string,
-  dueDate:Date,
+  dueDate:string,
   completed:boolean,
   userId:number
 }

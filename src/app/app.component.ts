@@ -15,7 +15,7 @@ import { LoginService } from './services/login.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,JsonPipe,CommonModule,TodoListComponent,FooterComponent,HeaderComponent],
+  imports: [RouterOutlet,CommonModule,FooterComponent,HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -28,5 +28,6 @@ export class AppComponent {
 
   ngOnInit(){
     this.isLoggedIn = this.loginService.isLoggedIn()
+    console.log("logged",this.loginService.isLoggedIn())
   }
 }

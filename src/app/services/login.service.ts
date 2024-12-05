@@ -39,8 +39,9 @@ export class LoginService {
   isLoggedIn(){
     if(isPlatformBrowser(this.platformId)){ 
       this.checkStorage()
+      return this.user!==null
     }
-    return this.user !==null
+    return false
   }
 
   logout(){

@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UsersService {
-  private port:any|number = process.env['PORT'] || 4000
+  private port:any|number =  4000
   private url:string = `http://localhost:${this.port}/api/users`
 
 

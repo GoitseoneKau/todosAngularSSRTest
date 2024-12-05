@@ -1,6 +1,7 @@
 import express from "express";
 import users from '../assets/users.json'
 import todos from '../assets/todos.json'
+import { Todo } from "../app/types/todo";
 // import { Todo } from "../app/types/todo";
 // import { User } from "../app/types/user";
 
@@ -110,17 +111,18 @@ router.post('/todos',(request,response)=>{//get is a request fuction from client
 
 //edit todo
 router.put('/todos/:id',(request,response)=>{//get is a request fuction from client
-    let todo = request.body
+    let todo = request.body as Todo
     let id = parseInt(request.params.id)
     
-        const todoToUpdate = todos.todos.find((todo: { id: number; })=>todo.id===id)
+        const todoToUpdate = todos.todos.find((todo: { id: number; })=>todo.id===id) as Todo
         if(todoToUpdate){
             todoToUpdate.todo =todo.todo
             todoToUpdate.priority =todo.priority
             todoToUpdate.priorityColor =todo.priorityColor
             todoToUpdate.dueDate = todo.dueDate
             todoToUpdate.completed =todo.completed
-            todos.todos.push([...todos,todoToUpdate])
+            todos.todos.map((todo)=>todo.id===todoToUpdate.id?{...todo,todoToUpdate}:todo)
+            console.log(todos.todos)
             response.json(todos.todos)//201 'Created' - Indicates that the request has succeeded and a new resource has been created as a result.
 
         }else{

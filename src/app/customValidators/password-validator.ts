@@ -5,13 +5,12 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 export class PasswordValidator {
 
     static passwordValidator(): ValidatorFn {
-        //regex test for password, atleast 1 number, character and Uppercase letter.
         const reg = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@.#$!%*?&^])([A-Za-z0-9@.#$!%*?&]){6,15}$");
        
         return (control: AbstractControl): ValidationErrors | null => {
         
-            const isValid = reg.test(control.value)//test validation against regular expession
-            return !isValid ? {invalidPassword: true } : null;//return error if invalid(false) else null
+            const isValid = reg.test(control.value)
+            return !isValid ? {invalidPassword: true } : null;
         };
       }
 

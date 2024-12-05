@@ -1,72 +1,52 @@
 import { UsersService } from './../../services/users.service';
-import { CommonModule, NgIf } from '@angular/common';
-import { Component, DestroyRef, inject, Inject } from '@angular/core';
+import { CommonModule, JsonPipe, NgIf } from '@angular/common';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { User } from '../../types/user';
 import { PasswordValidator } from '../../customValidators/password-validator';
-import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule,NgIf],
+  imports: [ReactiveFormsModule,NgIf,JsonPipe],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
   loginForm!:FormGroup//variable cclass to access login form
   private users:User[]=[]
-  subscribeUser!:Subscription
   testUser: User | undefined;
   message:string=""
   loggedIn!: boolean;
-  destroyRef = inject(DestroyRef)
 
-  constructor(
-    private router:Router,
-    private UserService:UsersService,
-    private fb:FormBuilder,
-    private loginService:LoginService
-  ){//injection of services
-
+  constructor(private router:Router,private UserService:UsersService,private fb:FormBuilder,private loginService:LoginService){//injection of services
     this.loginForm = this.fb.group({
       email: new FormControl("",[
         Validators.required,
-        Validators.pattern("[\\w-\\.]+@([\\w]+\.)+[\\w]{2,4}")//regex email validator
+        Validators.pattern("[\\w-\\.]+@([\\w]+\.)+[\\w]{2,4}")
       ]),
       password:new FormControl("",[
         Validators.required,
         PasswordValidator.passwordValidator()//custom password validator
       ])
     })
-
   }
 
-  //component initialized
   ngOnInit(){
-    //subscribe to user service
-   this.subscribeUser =  this.UserService.getUsers().subscribe((data)=>{
+    this.UserService.getUsers().subscribe((data)=>{
       this.users = data
     })
   }
 
-
-  //component destroyed
-  ngOnDestroy(){
-    //unsubscribe to user service
-    this.subscribeUser.unsubscribe()
-  }
-
-  //check if user exists by email
-  checkUser(user:User):User|undefined{
+  checkUser(user:User):User|undefined{//check if user exists by email
     this.testUser = this.users.find(d=> d.email == user.email )
     return  this.testUser
   }
 
-  //check if user exists by password
-  checkUserPassword(user:User):User|undefined{
+  checkUserPassword(user:User):User|undefined{//check if user exists by password
     return  this.testUser = this.users.find(d=>d.email==user.email && d.password==user.password )
   }
 
@@ -74,16 +54,12 @@ export class LoginComponent {
   
     if(this.checkUser(this.loginForm.value as User)){
       if(this.checkUserPassword(this.loginForm.value as User)){//if user is found via email and password,login
-        
-        this.loginService.login(this.loginForm.value as User)//login  through login service
-        this.loggedIn =   this.loginService.isLoggedIn();//variable to store login truthy value
-        this.destroyRef.onDestroy(()=>{
-          this.UserService.getUsers().subscribe((data)=>{
-            this.users = data
-          }).unsubscribe()
-        })
-        //navigate to user todos page
-        this.router.navigate(["/todos",this.testUser?.id],{ replaceUrl: true })
+        const user = this.loginForm.value as User
+        user.id = this.testUser!.id
+        this.loginService.login(user)//login  through login service
+        this.loggedIn = this.loginService.isLoggedIn();//variable to store login truthy value
+
+        this.router.navigate(["/todos",user.id],{ replaceUrl: true })//navigate to user todos page
       }else{//else user does not login and send message to check password
         this.loggedIn = this.loginService.isLoggedIn();
         this.message = "login failed. Check your password"

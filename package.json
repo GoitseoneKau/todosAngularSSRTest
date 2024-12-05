@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:todoAppEg": "node --watch dist/todo-app/server/server.mjs",
+    "serve:ssr:todoAppEg": "node  dist/todo-app/server/server.mjs",
     "ssr": "npm run serve:ssr:todoAppEg",
     "todoServer": "json-server --watch src/assets/todos.json --port 3001",
     "userServer": "json-server --watch src/assets/users.json --port 3000"
