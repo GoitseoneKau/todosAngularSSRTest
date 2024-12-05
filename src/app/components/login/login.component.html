@@ -14,7 +14,10 @@
                     placeholder="example@domain.com">
             </label>
                 <div class="alert" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
-                    <div *ngIf="loginForm.get('email')?.errors?.['required'] ">
+                    <div *ngIf="loginForm.get('email')?.errors?.['required']">
+                        <small>email is required</small>
+                    </div>
+                    <div *ngIf="loginForm.get('email')?.hasError('required')">
                         <small>email is required</small>
                     </div>
                     <div *ngIf="loginForm.get('email')?.errors?.['pattern'] ">

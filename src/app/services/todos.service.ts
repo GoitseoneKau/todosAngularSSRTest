@@ -8,7 +8,9 @@ import { Todo } from '../types/todo';
 })
 export class TodosService {
 
-private url:string = "http://localhost:4000/api/todos"
+  private port:any|number = process.env['PORT'] || 4000
+  private url:string = `http://localhost:${this.port}/api/todos`
+
   constructor(private https:HttpClient) { }
 
   getTodos():Observable<Todo[]>{
@@ -30,4 +32,5 @@ private url:string = "http://localhost:4000/api/todos"
   updateTodos(todo:Todo):Observable<Todo[]>{
     return this.https.put<Todo[]>(`${this.url}/${todo.id}`,todo)
   }
+  
 }

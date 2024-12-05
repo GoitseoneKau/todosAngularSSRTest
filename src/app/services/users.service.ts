@@ -8,8 +8,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UsersService {
-
-  private url:string = "http://localhost:4000/api/users" 
+  private port:any|number = process.env['PORT'] || 4000
+  private url:string = `http://localhost:${this.port}/api/users`
 
 
   usersBehaviour = new BehaviorSubject<User[]>([])
