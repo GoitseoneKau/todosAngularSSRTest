@@ -4,7 +4,6 @@
     "name": "DailyTodoApp",
     "devCommand":"npm run ssr",
     "routes":[{
-      "source":"/(.*)",
       "destination":"/api"
     }],
     "functions": {
