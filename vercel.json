@@ -1,10 +1,13 @@
 {
     "version": 2,
     "public": true,
-    "framework":"angular",
     "name": "DailyTodoApp",
-    "installCommand": "npm install",
-    "buildCommand":"npm run build",
+    "installCommand": "npm install && npm run build",
+    "devCommand":"npm run ssr",
+    "rewrites":[{
+      "source":"/(.*)",
+      "destination":"/api"
+    }],
     "outputDirectory": "dist",
     "functions": {
       "api/index.js": {
