@@ -2,8 +2,6 @@
     "version": 2,
     "public": true,
     "name": "DailyTodoApp",
-    "installCommand": "npm install",
-    "buildCommand":"npm run build",
     "devCommand":"npm run ssr",
     "rewrites":[{
       "source":"/(.*)",
