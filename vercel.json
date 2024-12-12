@@ -3,13 +3,13 @@
     "public": true,
     "name": "DailyTodoApp",
     "devCommand":"npm run ssr",
-    "rewrites":[{
+    "routes":[{
       "source":"/(.*)",
       "destination":"/api"
     }],
     "functions": {
       "api/index.js": {
-        "includeFiles":"dist/todo-app/server/**"
+        "includeFiles":"dist/todo-app/**"
       }
     }
   }
