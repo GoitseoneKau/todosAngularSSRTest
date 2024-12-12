@@ -3,7 +3,8 @@
     "public": true,
     "name": "DailyTodoApp",
     "devCommand":"npm run ssr",
-    "routes":[{
+    "rewrites":[{
+      "source":"/(.*)",
       "destination":"/api"
     }],
     "functions": {
