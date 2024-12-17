@@ -1,7 +1,7 @@
 {
     "version": 2,
     "public": true,
-    "name": "DailyTodoApp",
+    "name": "todo-app",
     "devCommand":"npm run ssr",
     "rewrites":[{
       "source":"/(.*)",
