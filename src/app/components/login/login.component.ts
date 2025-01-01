@@ -30,7 +30,7 @@ export class LoginComponent {
       ]),
       password:new FormControl("",[
         Validators.required,
-        PasswordValidator.passwordValidator()//custom password validator
+        PasswordValidator.passwordValidator//custom password validator
       ])
     })
   }
