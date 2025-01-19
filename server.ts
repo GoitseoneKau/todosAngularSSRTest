@@ -21,6 +21,7 @@ export function app(): express.Express {
   server.use(cors());
   // Example Express Rest API endpoints
   server.use('/api/',todoAPIRouter);
+
   // Serve static files from /browser
   server.get('**', express.static(browserDistFolder, {
     maxAge: '1y',
