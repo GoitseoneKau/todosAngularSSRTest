@@ -8,7 +8,7 @@ import { Todo } from '../types/todo';
 })
 export class TodosService {
 
-  private url:string = `localhost/api/todos`
+  private url:string = `localhost:4000/api/todos`
 
   constructor(private https:HttpClient) { }
 

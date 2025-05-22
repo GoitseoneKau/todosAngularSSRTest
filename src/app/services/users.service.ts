@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UsersService {
 
-  private url:string = `localhost/api/users`
+  private url:string = `localhost:4000/api/users`
 
 
    private userSubject = new BehaviorSubject<User|null>(null)
@@ -19,7 +19,7 @@ export class UsersService {
    }
 
   async checkUser(email:string,password:string){
-      console.log(this.url);
+   
     const user_check =  await fetch(`${this.url}?email=${email}&q_password=${encodeURIComponent(password)}`)
     if(!user_check.ok){
       return {error:"network error, please try again."}
