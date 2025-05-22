@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UsersService {
   private port:any|number = process.env['PORT'] ||4000
-  private url:string = `http://localhost:${this.port}/api/users`
+  private url:string = `${window.location.href}/api/users`
 
 
    private userSubject = new BehaviorSubject<User|null>(null)
