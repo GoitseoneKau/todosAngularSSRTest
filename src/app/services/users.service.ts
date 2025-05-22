@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class UsersService {
 
 
-  private url:string = `https://localhost:4000/api/users`
+  private url:string = `http://localhost:4000/api/users`
 
 
    private userSubject = new BehaviorSubject<User|null>(null)
