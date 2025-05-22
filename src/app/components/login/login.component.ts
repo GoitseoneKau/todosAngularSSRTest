@@ -41,6 +41,8 @@ export class LoginComponent {
     const password = this.loginForm.value.password
     const email = this.loginForm.value.email
 
+    console.log(window.location.href);
+
     this.UserService.checkUser(email,password)
     .then((check_data)=>{
      if(check_data.exists){
