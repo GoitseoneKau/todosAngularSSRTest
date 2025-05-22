@@ -12,7 +12,7 @@ export class LoginService {
 
   public user:User | undefined |null
   private readonly platformId = inject(PLATFORM_ID);
-  constructor(private userService:UsersService) { }
+  constructor() { }
 
   checkStorage(){
 

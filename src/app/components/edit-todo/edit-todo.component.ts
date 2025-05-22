@@ -19,7 +19,7 @@ import { MinDateValidator } from '../../customValidators/min-date-validator';
 @Component({
   selector: 'app-edit-todo',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf, DatePipe],
+  imports: [ReactiveFormsModule, NgIf],
   providers: [DatePipe],
   templateUrl: './edit-todo.component.html',
   styleUrl: './edit-todo.component.css',
@@ -66,7 +66,7 @@ export class EditTodoComponent {
     });
   }
 
-  ngAfterViewInit() {}
+
 
   setTodo(id: number) {
     this.todoService.getTodo(id).subscribe(
@@ -92,6 +92,8 @@ export class EditTodoComponent {
     this.Todo.priorityColor = this.setPriorityColor(this.Todo.priority);
 
     const update = this.todoService.updateTodos(this.Todo).subscribe(); //post updated todo
+
+    this.destroyRef.onDestroy(()=>update.unsubscribe())
 
     this.location.back(); //redirect to todo list page
   }

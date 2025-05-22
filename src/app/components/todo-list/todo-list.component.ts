@@ -1,8 +1,8 @@
-import { booleanAttribute, Component, DestroyRef, ElementRef, inject, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import { booleanAttribute, Component, DestroyRef, ElementRef, HostListener, inject, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { TodoComponent } from '../todo/todo.component';
 import { TodosService } from '../../services/todos.service';
 import { Todo } from '../../types/todo';
-import {  CommonModule, DatePipe } from '@angular/common';
+import {  CommonModule, DatePipe, ViewportScroller } from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import { HeaderComponent } from '../header/header.component';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -41,7 +41,8 @@ export class TodoListComponent implements OnInit,OnDestroy {
   ani_color: string="";
   loadingMessage: string="";
 
-
+  showScrollButton = false;
+  private scrollThreshold = 200;
 
   constructor(
     private todos:TodosService,
@@ -49,15 +50,27 @@ export class TodoListComponent implements OnInit,OnDestroy {
     private router:Router,
     private loginService:LoginService,
     private activatedRoute:ActivatedRoute,
-    private loaderService:LoaderService
+    private loaderService:LoaderService,
+    private viewportScroller: ViewportScroller
   ){ }//inject services 
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.showScrollButton = window.scrollY > this.scrollThreshold;
+  }
+
+  scrollToTop() {
+     this.viewportScroller.scrollToPosition([0, 0]);
+  }
 
   ngOnInit(){
     //check if user is logged in
     this.isLoggedIn = this.loginService.isLoggedIn()
     //store user id
-    const Id = parseInt(this.activatedRoute.snapshot.paramMap.get('uid')!)
-    this.getUser(Id)
+    const uid= parseInt(this.activatedRoute.snapshot.paramMap.get('uid')!)
+    this.getUser(uid)
+
+
 
     //open loading animation
     this.loaderService.loading()
@@ -71,11 +84,22 @@ export class TodoListComponent implements OnInit,OnDestroy {
     //set message
     this.loadingMessage="Loading.."
 
-    this.subscribedTodos = this.todos.getTodos().pipe(delay(1000)).subscribe({
+    this.loadTodos(uid)
+    
+ 
+  }
+
+  ngOnDestroy(){
+      this.subscribedTodos?.unsubscribe()//unsubscribe to todos subscription
+  }
+
+  //load todos
+  loadTodos(userId:number){
+    this.subscribedTodos = this.todos.getTodos(userId).pipe(delay(1000)).subscribe({
       next:(data)=>{
-        //store filtered todos by user, sorted by dates in ascending order
+        //store filtered todos by user, sorted by dates in descending order
         this.Todos=data.filter(d=>d.userId===this.userId)
-        .sort((a, b) => (a.dueDate > b.dueDate ? 1 : b.dueDate > a.dueDate ? -1 : 0))
+        .sort((a, b) => (a.dueDate > b.dueDate ? -1 : b.dueDate > a.dueDate ? 1 : 0))
 
         //store data for filtering,speeds up search
         this.filteredTodos=this.Todos
@@ -96,23 +120,17 @@ export class TodoListComponent implements OnInit,OnDestroy {
        
      }
     })
- 
-  }
-
-  ngOnDestroy(){
-      this.subscribedTodos?.unsubscribe()//unsubscribe to todos subscription
   }
 
   //get user according to userId
-  getUser(userId:number){
-    if(this.users){
-      const user = this.users.getUser(userId).subscribe((user)=>{
-        this.user=user
-        this.userId =user.userId
-      })
+  getUser(userId:number) {
+     this.userId = userId
+    if(this.loginService.user){
+      this.user = this.loginService.user
+     
     }
+ 
   }
-
 
   //tick the check button/complete check button
   checkTodo(todo:Todo){
@@ -138,7 +156,7 @@ export class TodoListComponent implements OnInit,OnDestroy {
     const deleteTodo = delayDelete.subscribe(()=>{
       this.Todos=this.Todos
     .filter(t=>t.id !== todo.id)
-    .sort((a, b) => (a.dueDate > b.dueDate ? 1 : b.dueDate > a.dueDate ? -1 : 0))
+    .sort((a, b) => (a.dueDate > b.dueDate ? -1 : b.dueDate > a.dueDate ? 1 : 0))
 
     //store data for filtering,speeds up search
     this.filteredTodos=this.Todos
@@ -173,23 +191,23 @@ export class TodoListComponent implements OnInit,OnDestroy {
     this.todoIsCompleteFilter = e
     
     if(this.todoIsCompleteFilter==="All"){//show all todos  
-      this.todos.getTodos().subscribe((todos)=>{
+      this.todos.getTodos(this.userId).subscribe((todos)=>{
 
         //filter to all todos of user's ID
         this.Todos = this.filteredTodos
         .filter((t)=> t.userId ===this.userId)
-        .sort((a, b) => (a.dueDate > b.dueDate ? 1 : b.dueDate > a.dueDate ? -1 : 0))
+        .sort((a, b) => (a.dueDate > b.dueDate ? -1 : b.dueDate > a.dueDate ? 1 : 0))
 
         //update empty todos
         this.checkEmptyTodosOnPage(this.Todos)
       })
     }else{   
-        this.todos.getTodos().subscribe((todos)=>{
+        this.todos.getTodos(this.userId).subscribe((todos)=>{
 
           //filter completed/incompleted todos
           this.Todos = this.filteredTodos
           .filter((t)=>t.completed === booleanAttribute(this.todoIsCompleteFilter) && t.userId ===this.userId)
-          .sort((a, b) => (a.dueDate > b.dueDate ? 1 : b.dueDate > a.dueDate ? -1 : 0))
+          .sort((a, b) => (a.dueDate > b.dueDate ? -1 : b.dueDate > a.dueDate ? 1 : 0))
 
           //update empty todos
           this.checkEmptyTodosOnPage(this.Todos)

@@ -112,6 +112,10 @@
 
     </ng-container>
 
+    <!-- scrollup button -->
+     <button *ngIf="showScrollButton" class="btnScrollUp" (click)="scrollToTop()"><i class="fa fa-arrow-up fa-xl"></i></button>
+
+
      <!-- sign up  loading spinner -->
      <ngx-spinner 
      type="ball-clip-rotate-pulse" 

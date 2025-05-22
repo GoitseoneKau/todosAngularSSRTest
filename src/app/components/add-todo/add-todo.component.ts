@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-add-todo',
   standalone: true,
-  imports: [ReactiveFormsModule,NgIf,DatePipe],
+  imports: [ReactiveFormsModule,NgIf],
   providers:[DatePipe],
   templateUrl: './add-todo.component.html',
   styleUrl: './add-todo.component.css'
@@ -23,7 +23,6 @@ export class AddTodoComponent {
 
   addForm!:FormGroup//variable to access add todo form
   userId:any
-  todos:Todo[]=[]
   minDate = new Date(); //date to check again input date
   destroyRef = inject(DestroyRef)//inject destroy service class
   
@@ -52,7 +51,6 @@ export class AddTodoComponent {
 
     ngOnInit(){
       this.userId = this.activeRoute.snapshot.paramMap.get('uid')//get user unique id
-      this.todoService.getTodos().subscribe((todos)=>this.todos = todos)//get todo
     }
 
     ngOnDestroy(){
@@ -60,9 +58,7 @@ export class AddTodoComponent {
     }
     
 
-    getNextId(obj:any){
-      return (Math.max.apply(Math,obj.map((o: { id: number })=>o.id))+1);///get next id from array/object list
-    }
+ 
 
     setPriorityColor(priority:string):string{//set priority color according to priority text
       let color=""
@@ -82,7 +78,7 @@ export class AddTodoComponent {
       todoData.completed = false
     
      const add =  this.todoService.postTodo(todoData).subscribe()//post new todo
-    // this.destroyRef.onDestroy(()=>add.unsubscribe())//unsuscribe when component is destroyed nd service not in use
+    
       this.location.back()//redirect to todos page
       
     }

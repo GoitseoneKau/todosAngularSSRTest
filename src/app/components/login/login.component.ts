@@ -1,5 +1,5 @@
 import { UsersService } from './../../services/users.service';
-import { CommonModule, JsonPipe, NgIf } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { PasswordValidator } from '../../customValidators/password-validator';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule,NgIf,JsonPipe],
+  imports: [ReactiveFormsModule,NgIf],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -20,7 +20,7 @@ export class LoginComponent {
   private users:User[]=[]
   testUser: User | undefined;
   message:string=""
-  loggedIn!: boolean;
+  loggedIn: boolean=false;
 
   constructor(private router:Router,private UserService:UsersService,private fb:FormBuilder,private loginService:LoginService){//injection of services
     this.loginForm = this.fb.group({
@@ -35,40 +35,31 @@ export class LoginComponent {
     })
   }
 
-  ngOnInit(){
-    this.UserService.getUsers().subscribe((data)=>{
-      this.users = data
-    })
-  }
-
-  checkUser(user:User):User|undefined{//check if user exists by email
-    this.testUser = this.users.find(d=> d.email == user.email )
-    return  this.testUser
-  }
-
-  checkUserPassword(user:User):User|undefined{//check if user exists by password
-    return  this.testUser = this.users.find(d=>d.email==user.email && d.password==user.password )
-  }
 
   login(){//login function
-  
-    if(this.checkUser(this.loginForm.value as User)){
-      if(this.checkUserPassword(this.loginForm.value as User)){//if user is found via email and password,login
-        const user = this.loginForm.value as User
-        user.id = this.testUser!.id
+
+    const password = this.loginForm.value.password
+    const email = this.loginForm.value.email
+
+    this.UserService.checkUser(email,password)
+    .then((check_data)=>{
+     if(check_data.exists){
+       const user = check_data.user as User
+    
         this.loginService.login(user)//login  through login service
         this.loggedIn = this.loginService.isLoggedIn();//variable to store login truthy value
+        this.UserService.setUser(user)
 
-        this.router.navigate(["/todos",user.id],{ replaceUrl: true })//navigate to user todos page
-      }else{//else user does not login and send message to check password
+        this.router.navigate(["/todos",user.userId],{ replaceUrl: true })//navigate to user todos page
+     }else{
         this.loggedIn = this.loginService.isLoggedIn();
-        this.message = "login failed. Check your password"
-      }
-     
-    }else{// else user does not log in and send message about possible email being wrong
-      this.loggedIn = this.loginService.isLoggedIn();
-      this.message="Oops user is not found. Check your email and password and try again!"
-    }
+        this.message = "login failed. Check your password and username"
+     }
+    })
+    .catch((error)=>{
+      this.message = "Oops network disconnected. Try again"
+    })
+  
     
   }
 

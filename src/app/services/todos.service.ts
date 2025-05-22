@@ -13,8 +13,8 @@ export class TodosService {
 
   constructor(private https:HttpClient) { }
 
-  getTodos():Observable<Todo[]>{
-    return this.https.get<Todo[]>(this.url)
+  getTodos(userId:number):Observable<Todo[]>{
+    return this.https.get<Todo[]>(`${this.url}?userId=${userId}`)
   }
 
   getTodo(id:number):Observable<Todo>{

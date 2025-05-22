@@ -1,208 +1,241 @@
-.list{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: 10% auto;
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 5% auto;
+  position: relative;
 }
 
-.todo-list{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    flex-direction: column;
-    width: 90%;
-    padding: 30px 10px;
+.btnScrollUp {
+  position: fixed;
+  z-index: 3;
+  padding: 15px 20px;
+  width: 3rem;
+  height: 3rem;
+  top: 80%;
+  right: 10%;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 2px 4px 5px black;
+  background-color: #0285b1;
+  color: #ffffff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-direction: column;
+  width: 90%;
+  padding: 30px 10px;
 }
 
 .todo-list h1 {
+  width: 100%;
+}
+
+.noNote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 3px 3px 1px 1px rgb(193, 188, 188);
+  height: 150px;
+  width: 100%;
+  border: grey 1px solid;
+  font-size: 0.85em;
+}
+
+.noNote p {
+  font-size: 2rem;
+  color: #000000b0;
+}
+
+.filterGroup {
+  display: flex;
+  gap: 5%;
+  justify-content: center;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.filterGroup .filterSelectors {
+  display: flex;
+  gap: 10px;
+  width: 50%;
+}
+
+.filterGroup .group-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.group-input {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  width: 100%;
+}
+.group-input select#Status,
+.group-input select#priority {
+  height: 40px;
+  font-size: 18px;
+  border-radius: 5px;
+  text-align: center;
+  width: 100%;
+}
+
+.group-input label {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.btnAdd {
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.btnAdd:hover {
+  background-color: rgb(0, 76, 0);
+}
+
+.btnAdd:active {
+  background-color: rgb(131, 188, 131);
+  color: black;
+  border: 1px groove white;
+}
+
+.greetings {
+  text-align: center;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 1.5em;
+}
+
+.greetings h4 {
+  font-size: 4rem;
+  font-weight: 500;
+  text-align: center;
+  color: rgba(1, 121, 161, 0.87);
+}
+
+.greetings h3 {
+  font-size: 3.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.date {
+  font-size: 30px;
+  font-weight: 400;
+  text-align: center;
+  padding: 15px;
+  width: 100%;
+}
+
+todo-item {
+  width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+  .greetings {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .list {
+    margin: 10% auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .filterGroup {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filterGroup .group-button,
+  .filterGroup .filterSelectors {
+    width: 80%;
+  }
+
+  .btnAdd {
     width: 100%;
-}
-
-.noNote{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    background-color: white;
-    /* border-radius: 5px; */
-    box-shadow: 3px 3px 1px 1px rgb(193, 188, 188);
-    height: 150px;
-    width: 100%;
-    border: grey 1px solid;
-    font-size: 0.85em;
-}
-
-.noNote p{
-    font-size: 2rem;
-    color: #000000b0;
-}
-
-.filterGroup{
-    display: flex;
-    gap: 5%;
-    justify-content: center;
-    margin-top: 50px;
-}
-
-.filterGroup .filterSelectors{
-    display: flex;
-    gap: 10px;
-}
-
-.filterGroup .group-button{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.group-input{
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 5px;
-}
-.group-input select#Status,.group-input select#priority{
     height: 40px;
-    font-size: 18px;
-    border-radius: 5px;
-    text-align: center;
-}
-
-
-.group-input label{
-    font-size: 20px;
-    font-weight: 400;
-}
-
-.btnAdd{
-    width: 100px;
-    height: 40px;
-    /* border-radius: 5px; */
     background-color: green;
     color: white;
     font-weight: bold;
     border: none;
-}
+  }
 
-.btnAdd:hover{
-    background-color: rgb(0, 76, 0);
-}
-
-.btnAdd:active{
-    background-color: rgb(131, 188, 131);
-    color: black;
-    border: 1px groove white;
-}
-
-.greetings{
+  .group-input select#Status,
+  .group-input select#priority {
+    height: 30px;
+    font-size: 15px;
+    width: 100%;
     text-align: center;
+  }
+
+  .group-input {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .group-input label {
+    font-size: 15px;
+  }
+
+  .filterSelectors {
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 1.5em;
+  }
 }
 
-.greetings h4{
-    font-size: 3rem;
+@media screen and (max-width: 400px) {
+  .todo-list {
+    margin: 0;
+    width: 100%;
+  }
+
+  .todo-list h1 {
+    width: 100%;
+    font-size: 1.8rem;
+  }
+
+  .greetings h4 {
+    font-size: 2.5rem;
     font-weight: 500;
     text-align: center;
-    color:  rgba(1, 121, 161, 0.87)
-}
+    color: rgba(1, 121, 161, 0.87);
+  }
 
-.greetings h3{
-    font-size: 3.5rem;
+  .greetings h3 {
+    font-size: 3rem;
     font-weight: 600;
     text-align: center;
-}
+  }
 
-.date{
-    font-size: 30px;
+  .date {
+    font-size: 25px;
     font-weight: 400;
     text-align: center;
-    padding: 15px;
     width: 100%;
+  }
 }
-
-todo-item{
-    width: 100%;
-}
-
-
-@media screen and (max-width:800px) {
-    .greetings{
-        flex-direction: column;
-        gap: .5em;
-    }
-}
-
-@media screen and (max-width:600px) {
-
-    .filterGroup{
-        flex-direction: column;
-    }
-
-    .btnAdd{
-        width: 100%;
-        height: 40px;
-        background-color: green;
-        color: white;
-        font-weight: bold;
-        border: none;
-    }
-
-    .group-input select#Status,.group-input select#priority{
-        height: 30px;
-        font-size: 15px;
-        width: 100%;
-        text-align: center;
-    }
-
-    .group-input {
-        flex-direction: column;
-    }
-
-    .group-input label{
-        font-size: 15px;
-    }
-
-    .filterSelectors{
-        display: flex;
-    }
-}
-
-@media screen and (max-width:400px) {
-    .todo-list{
-        margin: 0;
-        width:100%
-    }
-
-    .todo-list h1 {
-        width: 100%;
-        font-size: 1.8rem;
-    }
-
-    .greetings h4{
-        font-size: 2.5rem;
-        font-weight: 500;
-        text-align: center;
-        color:  rgba(1, 121, 161, 0.87)
-    }
-    
-    .greetings h3{
-        font-size: 3rem;
-        font-weight: 600;
-        text-align: center;
-    }
-
-    .date{
-        font-size: 25px;
-        font-weight: 400;
-        text-align: center;
-        width: 100%;
-    }
-
-}
-
-

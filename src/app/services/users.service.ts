@@ -12,30 +12,37 @@ export class UsersService {
   private url:string = `http://localhost:${this.port}/api/users`
 
 
-  usersBehaviour = new BehaviorSubject<User[]>([])
+   private userSubject = new BehaviorSubject<User|null>(null)
 
   constructor(private https:HttpClient) { }
-  getMessage(){
-    return this.https.get(this.url)
+
+  async checkUser(email:string,password:string){
+
+    const user_check =  await fetch(`${this.url}?email=${email}&q_password=${encodeURIComponent(password)}`)
+    if(!user_check.ok){
+      return {error:"network error, please try again."}
+    }
+
+    return user_check.json()
   }
 
-  getUsers():Observable<User[]>{
-    return this.https.get<User[]>(this.url)
+  setUser(user:User){
+    this.userSubject.next(user)
   }
 
-  getUser(id:number):Observable<User>{
-    return this.https.get<User>(`${this.url}/${id}`)
+  getUser():Observable<User|null>{
+    return this.userSubject.asObservable()
   }
 
-  postUsers(user:User):Observable<User[]>{
-    return this.https.post<User[]>(`${this.url}`,user)
+  postUser(user:User):Observable<User>{
+    return this.https.post<User>(this.url,user)
   }
 
-  deleteUser(user:User):Observable<User[]>{
-    return this.https.delete<User[]>(`${this.url}/${user.id}`)
+  deleteUser(user:User):Observable<User>{
+    return this.https.delete<User>(`${this.url}/${user.id}`)
   }
 
-  updateUser(user:User):Observable<User[]>{
-    return this.https.put<User[]>(`${this.url}/${user.id}`,user)
+  updateUser(user:User):Observable<User>{
+    return this.https.put<User>(`${this.url}/${user.id}`,user)
   }
 }

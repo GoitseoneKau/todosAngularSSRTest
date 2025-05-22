@@ -16,9 +16,25 @@ router.use(express.json())
 
 //get all
 router.get('/users', (request,response)=>{//get is a request fuction from client
-    response.json(users.users)//response to client, in json
-})
+    const {email,q_password} = request.query
+    if(email && q_password){
+        const users_data = users.users.find((user)=>user.email==email && user.password==q_password)!
 
+        if( users_data){
+            const { password, ...user } = users_data
+            response.json({exists:true,user:user})//response to client, in json 
+        }else{
+             response.json({exists:false})//response to client, in json 
+        }
+    }else{
+        const users_data = users.users.map((user) => {
+            const { password, ...u } = user
+            return u
+        })
+        response.json(users_data)//response to client, in json
+    }
+  
+})
 
 //get one user
 router.get('/users/:id',(request,response)=>{//get is a request fuction from client
@@ -26,15 +42,24 @@ router.get('/users/:id',(request,response)=>{//get is a request fuction from cli
     response.json(users.users.find((user: { id: number; })=>user.id===id))//response to client, in json
 })
 
+ function getNextUserId(obj:any){
+    //create unique userid number looping through object 
+    return ( Math.max.apply(Math,obj.map((user: { userId: number })=>user.userId)) + 1 );
+  }
+
+
 //post a new user
 router.post('/users',(request,response)=>{//get is a request fuction from client
  
     let user = request.body
     user.id = users.users.length+1
+    user.userId = getNextUserId(users.users)
 
     if(user){
         users.users.push(user)
         response.json(users)//201 'Created' - Indicates that the request has succeeded and a new resource has been created as a result.
+    }else{
+        response.json({message:"user not created"})
     }
 })
 
@@ -51,8 +76,10 @@ router.put('/users/:id',(request,response)=>{//get is a request fuction from cli
             userToUpdate.lastName =user.lastName
             userToUpdate.password =user.password
             userToUpdate.phone =user.phone
-           
-            response.json(users.users)//201 'Created' - Indicates that the request has succeeded and a new resource has been created as a result.
+
+            users.users.map((user)=>user.id===userToUpdate.id?{...user,userToUpdate}:user)
+
+            response.json(userToUpdate)//201 'Created' - Indicates that the request has succeeded and a new resource has been created as a result.
 
         }else{
             response.json({message:"user was not found"})
@@ -69,11 +96,9 @@ router.delete('/users/:id',(request,response)=>{//get is a request fuction from 
     if(user){
         const userToDelete = users.users.find((user: { id: number; })=>user.id === id)
         if(userToDelete){
-            const newList =users.users.filter((user: { id: number; })=>user.id !== id)
+            users.users.filter((user: { id: number; })=>user.id !== id)
 
-            users.users = newList
-
-            response.json(newList)//201 'Created' - Indicates that the request has succeeded and a new resource has been created as a result.
+            response.json(userToDelete)//201 'Created' - Indicates that the request has succeeded and a new resource has been created as a result.
 
         }else{
             response.json({message:"user was not found"})
@@ -89,7 +114,13 @@ router.delete('/users/:id',(request,response)=>{//get is a request fuction from 
 
 //get all todos
 router.get('/todos',(request,response)=>{//get is a request fuction from client
-    response.json(todos.todos)//response to client, in json
+     const {userId} = request.query
+     if(userId){
+        const user_todos = todos.todos.filter((todo)=>todo.userId == +userId!)
+        response.json(user_todos)//response to client, in json
+     }else{
+           response.json(todos.todos)//response to client, in json
+     }
 })
 
 //get one todo
@@ -101,10 +132,13 @@ router.get('/todos/:id',(request,response)=>{//get is a request fuction from cli
 //post a new todo
 router.post('/todos',(request,response)=>{//get is a request fuction from client
     let todo = request.body
-    todo.id = todos.todos.length+1
-   
-    todos.todos.push(todo)
-    response.json(todos.todos)//201 'Created' - Indicates that the request has succeeded and a new resource has been created as a result.
+  if(todo){
+        todo.id = todos.todos.length+1
+        todos.todos.push(todo)
+        response.json(todo)//201 'Created' - Indicates that the request has succeeded and a new resource has been created as a result.
+    }else{
+        response.json({message:"todo was not created"})
+    }
     
 })
 
@@ -122,8 +156,8 @@ router.put('/todos/:id',(request,response)=>{//get is a request fuction from cli
             todoToUpdate.dueDate = todo.dueDate
             todoToUpdate.completed =todo.completed
             todos.todos.map((todo)=>todo.id===todoToUpdate.id?{...todo,todoToUpdate}:todo)
-            console.log(todos.todos)
-            response.json(todos.todos)//201 'Created' - Indicates that the request has succeeded and a new resource has been created as a result.
+   
+            response.json(todoToUpdate)//201 'Created' - Indicates that the request has succeeded and a new resource has been created as a result.
 
         }else{
             response.json({message:" was not found"})
@@ -143,14 +177,12 @@ router.delete('/todos/:id',(request,response)=>{//get is a request fuction from 
     if(todo){
         const todoToDelete = todos.todos.find((todo: { id: number; })=>todo.id === id)
         if(todoToDelete){
-            const newList =todos.todos.filter((todo: { id: number; })=>todo.id !== id)
-
-            todos.todos = newList
+            todos.todos.filter((todo: { id: number; })=>todo.id !== id)
        
-            response.json(newList)//201 'Created' - Indicates that the request has succeeded and a new resource has been created as a result.
+            response.json(todoToDelete)//201 'Created' - Indicates that the request has succeeded and a new resource has been created as a result.
 
         }else{
-            response.json({message:"user was not found"})
+            response.json({message:"todo was not found"})
         }
     
     }

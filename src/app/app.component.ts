@@ -28,6 +28,5 @@ export class AppComponent {
 
   ngOnInit(){
     this.isLoggedIn = this.loginService.isLoggedIn()
-    console.log("logged",this.loginService.isLoggedIn())
   }
 }
