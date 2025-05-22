@@ -15,11 +15,11 @@ export class UsersService {
    private userSubject = new BehaviorSubject<User|null>(null)
 
   constructor(private https:HttpClient) {
-    console.log(this.url);
+  
    }
 
   async checkUser(email:string,password:string){
-
+      console.log(this.url);
     const user_check =  await fetch(`${this.url}?email=${email}&q_password=${encodeURIComponent(password)}`)
     if(!user_check.ok){
       return {error:"network error, please try again."}
