@@ -7,7 +7,7 @@
     ],
     "functions": {
       "api/index.js": {
-        "includeFiles":["dist/todo-app/server/**"]
+        "includeFiles":"dist/todo-app/server/**"
       }
     }
   }
