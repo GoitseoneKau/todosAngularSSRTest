@@ -8,7 +8,7 @@ import { Todo } from '../types/todo';
 })
 export class TodosService {
 
-  private url:string = `https://todos-angular-ssr-test.vercel.app/api/todos`
+  private url:string = `https://localhost/api/todos`
 
   constructor(private https:HttpClient) { }
 

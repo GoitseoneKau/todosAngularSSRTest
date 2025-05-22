@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class UsersService {
 
 
-  private url:string = `https://todos-angular-ssr-test.vercel.app/api/users`
+  private url:string = `https://localhost/api/users`
   private router = inject(Router)
 private platformId = inject(PLATFORM_ID)
 
