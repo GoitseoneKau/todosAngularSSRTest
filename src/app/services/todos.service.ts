@@ -8,7 +8,6 @@ import { Todo } from '../types/todo';
 })
 export class TodosService {
 
-  private port:any|number =    process.env['PORT'] ||4000
   private url:string = `${window.location.href}/api/todos`
 
   constructor(private https:HttpClient) { }
