@@ -14,7 +14,9 @@ export class UsersService {
 
    private userSubject = new BehaviorSubject<User|null>(null)
 
-  constructor(private https:HttpClient) { }
+  constructor(private https:HttpClient) {
+    console.log(this.url);
+   }
 
   async checkUser(email:string,password:string){
 
