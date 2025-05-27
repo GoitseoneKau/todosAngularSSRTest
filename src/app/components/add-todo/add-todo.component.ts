@@ -77,9 +77,9 @@ export class AddTodoComponent {
       todoData.priorityColor = this.setPriorityColor(todoData.priority)
       todoData.completed = false
     
-     const add =  this.todoService.postTodo(todoData).subscribe()//post new todo
+     this.todoService.postTodo(todoData).subscribe(()=>this.location.back())//post new todo
     
-      this.location.back()//redirect to todos page
+      
       
     }
 

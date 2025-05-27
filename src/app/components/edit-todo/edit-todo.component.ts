@@ -2,17 +2,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, DestroyRef, inject } from '@angular/core';
 import { Todo } from '../../types/todo';
 import {
-  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
-  ValidationErrors,
-  ValidatorFn,
   Validators,
 } from '@angular/forms';
 import { NgIf, DatePipe, Location } from '@angular/common';
-import { LoginService } from '../../services/login.service';
 import { TodosService } from '../../services/todos.service';
 import { MinDateValidator } from '../../customValidators/min-date-validator';
 
@@ -31,13 +27,11 @@ export class EditTodoComponent {
   todoText: string = ''; //todo text/description
   prioritytext: string = ''; //todo priority variable
   todoDate: Date = new Date(); //todo date variable
-  isLoggedIn: boolean = false; //store logged in result
   minDate = new Date(); //date to check again input date
   destroyRef = inject(DestroyRef); //inject destroy service class
 
   constructor(
     private router: Router,
-    private loginService: LoginService,
     private todoService: TodosService,
     private activeRoute: ActivatedRoute,
     private location: Location,
@@ -50,7 +44,6 @@ export class EditTodoComponent {
   ngOnInit() {
     this.todoId = parseInt(this.activeRoute.snapshot.paramMap.get('id')!); //get todo id from url or route path
 
-    this.isLoggedIn = this.loginService.isLoggedIn(); //check if user is logged in
     this.setTodo(this.todoId); //set the todo to be edited
     this.editForm = this.fb.group({
       //get form values and validate
@@ -78,8 +71,7 @@ export class EditTodoComponent {
           priority: this.Todo.priority,
           dueDate: this.dp.transform(this.Todo.dueDate, 'yyyy-MM-ddThh:mm'),
         });
-      },
-      () => console.log('error')
+      }
     );
   }
 
@@ -91,11 +83,14 @@ export class EditTodoComponent {
     this.Todo.priority = this.editForm.get('priority')?.value;
     this.Todo.priorityColor = this.setPriorityColor(this.Todo.priority);
 
-    const update = this.todoService.updateTodos(this.Todo).subscribe(); //post updated todo
+    const update = this.todoService.updateTodos(this.Todo).subscribe( ()=>{
+      this.destroyRef.onDestroy(()=>update.unsubscribe())
+      this.location.back()
+    } ); //post updated todo
 
-    this.destroyRef.onDestroy(()=>update.unsubscribe())
+    
 
-    this.location.back(); //redirect to todo list page
+ 
   }
 
   setPriorityColor(priority: string): string {

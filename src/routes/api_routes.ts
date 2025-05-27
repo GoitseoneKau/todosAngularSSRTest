@@ -177,7 +177,7 @@ router.delete('/todos/:id',(request,response)=>{//get is a request fuction from 
     if(todo){
         const todoToDelete = todos.todos.find((todo: { id: number; })=>todo.id === id)
         if(todoToDelete){
-            todos.todos.filter((todo: { id: number; })=>todo.id !== id)
+            todos.todos = todos.todos.filter((todo: { id: number; })=>todo.id !== id)
        
             response.json(todoToDelete)//201 'Created' - Indicates that the request has succeeded and a new resource has been created as a result.
 

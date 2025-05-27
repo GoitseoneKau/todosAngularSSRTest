@@ -60,7 +60,7 @@ export class TodoListComponent implements OnInit,OnDestroy {
   }
 
   scrollToTop() {
-     this.viewportScroller.scrollToPosition([0, 0]);
+     window.scrollTo({top:0,left:0,behavior:'smooth'})
   }
 
   ngOnInit(){
@@ -98,7 +98,7 @@ export class TodoListComponent implements OnInit,OnDestroy {
     this.subscribedTodos = this.todos.getTodos(userId).pipe(delay(1000)).subscribe({
       next:(data)=>{
         //store filtered todos by user, sorted by dates in descending order
-        this.Todos=data.filter(d=>d.userId===this.userId)
+        this.Todos=data
         .sort((a, b) => (a.dueDate > b.dueDate ? -1 : b.dueDate > a.dueDate ? 1 : 0))
 
         //store data for filtering,speeds up search
@@ -127,7 +127,6 @@ export class TodoListComponent implements OnInit,OnDestroy {
      this.userId = userId
     if(this.loginService.user){
       this.user = this.loginService.user
-     
     }
  
   }
@@ -144,19 +143,14 @@ export class TodoListComponent implements OnInit,OnDestroy {
     this.checkEmptyTodosOnPage(this.Todos)
 
     //unsubscribe after update
-    this.destroyRef.onDestroy(()=>updateComplete.unsubscribe())
+    //this.destroyRef.onDestroy(()=>updateComplete.unsubscribe())
   }
 
   deleteTodo(todo:Todo){//function to delete todo
 
-    //delay delation of element to time with animation
-    const delayDelete = this.todos.deleteTodo(todo).pipe(delay(1000));
-
     //delete todo
-    const deleteTodo = delayDelete.subscribe(()=>{
-      this.Todos=this.Todos
-    .filter(t=>t.id !== todo.id)
-    .sort((a, b) => (a.dueDate > b.dueDate ? -1 : b.dueDate > a.dueDate ? 1 : 0))
+    this.todos.deleteTodo(todo).pipe(delay(1000)).subscribe(()=>{
+      this.Todos=this.Todos.filter(t=>t.id !== todo.id).sort((a, b) => (a.dueDate > b.dueDate ? -1 : b.dueDate > a.dueDate ? 1 : 0))
 
     //store data for filtering,speeds up search
     this.filteredTodos=this.Todos
@@ -169,7 +163,7 @@ export class TodoListComponent implements OnInit,OnDestroy {
     
 
     //unsubscribe after deletion operation
-    this.destroyRef.onDestroy(()=>deleteTodo.unsubscribe())
+    //this.destroyRef.onDestroy(()=>deleteTodo.unsubscribe())
   }
 
 
@@ -191,28 +185,27 @@ export class TodoListComponent implements OnInit,OnDestroy {
     this.todoIsCompleteFilter = e
     
     if(this.todoIsCompleteFilter==="All"){//show all todos  
-      this.todos.getTodos(this.userId).subscribe((todos)=>{
+
 
         //filter to all todos of user's ID
         this.Todos = this.filteredTodos
-        .filter((t)=> t.userId ===this.userId)
         .sort((a, b) => (a.dueDate > b.dueDate ? -1 : b.dueDate > a.dueDate ? 1 : 0))
 
         //update empty todos
         this.checkEmptyTodosOnPage(this.Todos)
-      })
+   
     }else{   
-        this.todos.getTodos(this.userId).subscribe((todos)=>{
+     
 
           //filter completed/incompleted todos
           this.Todos = this.filteredTodos
-          .filter((t)=>t.completed === booleanAttribute(this.todoIsCompleteFilter) && t.userId ===this.userId)
+          .filter((t)=>t.completed === booleanAttribute(this.todoIsCompleteFilter) )
           .sort((a, b) => (a.dueDate > b.dueDate ? -1 : b.dueDate > a.dueDate ? 1 : 0))
 
           //update empty todos
           this.checkEmptyTodosOnPage(this.Todos)
-        })
-    }
+      
+      }
   }
   
   checkEmptyTodosOnPage(todos:Todo[]){//checks if todos are empty after they have been filtered

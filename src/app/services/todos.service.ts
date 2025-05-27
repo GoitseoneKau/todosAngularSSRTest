@@ -8,7 +8,7 @@ import { Todo } from '../types/todo';
 })
 export class TodosService {
 
-  private url:string = `https://todos-angular-ssr-test.vercel.app/api/todos`
+  private url:string = `http://localhost:4000/api/todos`
 
   constructor(private https:HttpClient) { }
 
@@ -20,16 +20,16 @@ export class TodosService {
     return this.https.get<Todo>(`${this.url}/${id}`)
   }
 
-  postTodo(todo:Todo):Observable<Todo[]>{
-    return this.https.post<Todo[]>(this.url,todo)
+  postTodo(todo:Todo):Observable<Todo>{
+    return this.https.post<Todo>(this.url,todo)
   }
 
   deleteTodo(todo:Todo):Observable<Todo>{
     return this.https.delete<Todo>(`${this.url}/${todo.id}`)
   }
 
-  updateTodos(todo:Todo):Observable<Todo[]>{
-    return this.https.put<Todo[]>(`${this.url}/${todo.id}`,todo)
+  updateTodos(todo:Todo):Observable<Todo>{
+    return this.https.put<Todo>(`${this.url}/${todo.id}`,todo)
   }
   
 }
