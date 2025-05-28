@@ -44,14 +44,7 @@ export function app(): express.Express {
       .then((html) => res.send(html))
       .catch((err) => next(err));
   });
-
-
-  const port = process.env['PORT'] || 4000;
-
-  // Start up the Node server
-  server.listen(port, () => {
-    console.log(`Node Express server listening on http://localhost:${port}`);
-  });
+  
 
   return server;
 }
@@ -61,7 +54,7 @@ export function run(): void {
 
   // Start up the Node server
   const server = app();
-  server.listen(port, () => {
+  server.listen(0, () => {
     console.log(`Node Express server listening on http://localhost:${port}`);
   });
 }
