@@ -19,7 +19,7 @@ export class LoginComponent {
   loginForm!:FormGroup//variable cclass to access login form
   private users:User[]=[]
   testUser: User | undefined;
-  message:string=""
+  message:string | undefined
   loggedIn: boolean=false;
 
   constructor(private router:Router,private UserService:UsersService,private fb:FormBuilder,private loginService:LoginService){//injection of services

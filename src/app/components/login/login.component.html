@@ -51,7 +51,7 @@
             </div>
         </div>
 
-        <div *ngIf="!loggedIn" class="alert poppins-light ">{{message}}</div>
+        <div *ngIf="message || loginForm.get('password')?.dirty" class="alert poppins-light ">{{message}}</div>
 
         <div class="button">
             <input [disabled]="!loginForm.valid" type="submit" id="submit" value="login">
