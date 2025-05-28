@@ -11,7 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UsersService {
 
-  private url:string = `http://localhost/api/users`
+  private host:string = location.host
+  private url:string = `${this.host}/api/users`
 
 
    private userSubject = new BehaviorSubject<User|null>(null)
@@ -21,7 +22,7 @@ export class UsersService {
   }
 
   async checkUser(email:string,password:string){
-    
+    console.log(this.host);
     const user_check =  await fetch(`${this.url}?email=${email}&q_password=${encodeURIComponent(password)}`)
     if(!user_check.ok){
       return {error:"network error, please try again."}
