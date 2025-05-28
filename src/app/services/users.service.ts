@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class UsersService {
   private platformId = inject(PLATFORM_ID)
 
-  private host:string = isPlatformBrowser(this.platformId)?location.href :"http://localhost:4000/"
+  private host:string = location.href
   private url:string = `${this.host}api/users`
 
 

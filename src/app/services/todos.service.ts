@@ -12,7 +12,7 @@ export class TodosService {
 
     private platformId = inject(PLATFORM_ID)
   
-    private host:string = isPlatformBrowser(this.platformId)?location.origin :"http://localhost:4000/"
+    private host:string = location.origin
   private url:string = `${this.host}/api/todos`
 
   constructor(private https:HttpClient) { 
