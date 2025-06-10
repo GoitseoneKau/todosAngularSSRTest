@@ -5,9 +5,9 @@
     flex-direction: column;
     padding: 5px;
     gap: 20px;
-    height: auto;
+    height: calc(100% - 170px);
     width: 100%;
-    margin-top: 100px;
+
 }
 
 
@@ -15,7 +15,6 @@
 @media screen and (max-width:800px) {
     form.add-todo-form{
         min-width: 95%;
-        height: 100%;
         content: " ";
         clear: both;
     }

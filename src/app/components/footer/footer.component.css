@@ -4,8 +4,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     width: 100%;
-    margin-top: 2%;
     position: relative;
     bottom: 0;
 }
@@ -15,24 +15,8 @@
     font-weight: 500;
 }
 
-@media screen and (min-width:480px) and (min-height:1000px){
-    .footer{
-        margin-top: 10%;
-    }
-    
-}
-
-
-@media screen and (min-width:1000px) and (min-height:800px){
-    .footer{
-        margin-top: 10%;
-    }
-    
-}
-
-@media screen and (min-width:700px) and (min-height:1000px){
-    .footer{
-        margin-top:10%;
-    }
-    
+.footer .owner-text{
+    text-align: center;
+    font-weight: 400;
+    color: #4d4d4d;
 }

@@ -5,7 +5,7 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 export class PasswordValidator {
 
     static passwordValidator(): ValidatorFn {
-        const reg = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@.#$!%*?&^])([A-Za-z0-9@.#$!%*?&]){6,15}$");
+        const reg = new RegExp("(?=.*[A-Z])(?=.*[0-9])(?=.*[@.#$!%*?&^])");
        
         return (control: AbstractControl): ValidationErrors | null => {
         

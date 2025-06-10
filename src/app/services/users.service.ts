@@ -23,7 +23,7 @@ export class UsersService {
   }
 
   async checkUser(email:string,password:string){
-  console.log(this.url);
+
     const user_check =  await fetch(`${this.url}?email=${email}&q_password=${encodeURIComponent(password)}`)
     if(!user_check.ok){
       return {error:"network error, please try again."}

@@ -260,8 +260,7 @@ div.button p{
 .form-group label{
   display: inline-flex;
   justify-content: space-between;
-  align-items: center;
-  text-align: left;
+  align-items:flex-start;
   font-weight: 300;
   gap: 5px;
   width: 100%;
@@ -287,11 +286,21 @@ label input.ng-valid{
 .alert{
   width: 100%;
   color: red;
+  visibility: visible!important;
+  height: 2.65em;
 }
 
-.alert div small{
-  font-weight: 400;
+.hidden{
+  visibility: hidden;
+  height: 2.65em;
 }
+
+.alert  small{
+  font-weight: 400;
+  font-size: .65em;
+}
+
+
 
 @media screen and (max-width:800px) {
   form.login-form{

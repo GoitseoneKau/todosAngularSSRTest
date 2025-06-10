@@ -100,7 +100,7 @@ export class SignupComponent {
 
     this.userService.checkUser(this.userInfo.email!, this.userInfo.password!)
       .then((check_data) => {
-        if (!check_data.exists) {
+        if (check_data.exists==false) {
           //pipe delay function to post http observable
           const uploadUser = this.userService.postUser(this.userInfo!)//delay http post observable for server response time
 
@@ -116,14 +116,14 @@ export class SignupComponent {
             this.loginService.login(user)//login  through login service
             this.userService.setUser(user)
 
-            this.router.navigate(["/todos", user.userId], { replaceUrl: true })//navigate to user todos page
+           
 
             //unload animation after 2 seconds, set 'signedUp' to true
             setTimeout(() => {
               this.loaderService.unloading()
               this.signedUp = true
-
-            }, 2000)
+              this.router.navigate(["/todos", user.userId], { replaceUrl: true })//navigate to user todos page
+            }, 1000)
           }
           )//after uploaing user data, end loading animation
 

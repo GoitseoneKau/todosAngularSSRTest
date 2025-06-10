@@ -4,53 +4,8 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
-    padding: 5px;
-    height: 90%;
-    margin: 5% 0
+    padding: 1em;
+    height: calc(100vh - 80px);
 }
 
-
-/* small screen phones */
-@media screen and (max-width:320px) {
- .login{
-    height: 100%;
- }
-}
-
-/* general mobile phones */
-@media screen and (max-width:450px) and (max-height:1000px){
-    .login{
-        margin: 15% 0
-    }
-    
-}
-
-/* tablets - different sizes */
-@media screen and (min-width:480px) and (min-height:1000px){
-    .login{
-        gap: 50px;
-        height: 100%;
-        margin: 25% 0
-    }
-    
-}
-
-
-@media screen and (min-width:1000px) and (min-height:800px){
-    .login{
-        gap: 50px;
-        height: 100%;
-        margin: 25% 0
-    }
-    
-}
-
-@media screen and (min-width:700px) and (min-height:1000px){
-    .login{
-        gap: 50px;
-        height: 100%;
-        margin: 25% 0
-    }
-    
-}
 

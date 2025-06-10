@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 5% auto;
+  margin: 2.5% auto;
   position: relative;
 }
 
@@ -160,9 +160,7 @@ todo-item {
     gap: 0.5em;
   }
 
-  .list {
-    margin: 10% auto;
-  }
+
 }
 
 @media screen and (max-width: 600px) {

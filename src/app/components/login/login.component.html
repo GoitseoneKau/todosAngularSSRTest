@@ -13,45 +13,51 @@
                     type="email" id="email" formControlName="email" 
                     placeholder="example@domain.com">
             </label>
-                <div class="alert" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
-                    <div *ngIf="loginForm.get('email')?.errors?.['required'] ">
-                        <small>email is required</small>
-                    </div>
-                    <div *ngIf="loginForm.get('email')?.errors?.['pattern'] ">
-                       <small>enter valid email</small>
-                    </div>
+            <div class="alert" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+                <div *ngIf="loginForm.get('email')?.errors?.['required'] ">
+                    <small>email is required</small>
                 </div>
+                <div *ngIf="loginForm.get('email')?.errors?.['pattern'] ">
+                    <small>enter valid email</small>
+                </div>
+            </div>
         </div>
     
         <div class="form-group">
+
+           
             <label for="password">Password :
-                <input  [class.ng-invalid]="loginForm.get('password')?.touched"
-                    type="password" id="password"  name="password"
-                    formControlName="password" >
+                <input  [class.ng-invalid]="pass?.touched"
+                    type="password" id="password"  name="password" (change)="onPasswordChange($event)"
+                    formControlName="password">
             </label>
-            <div class="alert" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
-                <div *ngIf="loginForm.get('password')?.errors?.['required'] ">
-                  <small>  password is required</small>
-                </div>
+
+            @let touchValid = pass?.touched && pass?.invalid;
+            @let dirtyValid = pass?.dirty && pass?.invalid;
+            @let requiredError = pass?.hasError('required');
+            @let valueLength = pass?.value.length>0;
+            
+            @let invalidPassword = pass?.hasError('invalidPassword');
+            @let minLength = pass?.hasError('minlength');
+            @let passwordValidators = invalidPassword || minLength;
+            @let invalidPasswordMessage = 'Password should atleast have 1 Capital letter,1 Number and\n 1 character ["&#64;", "$", ".","#", "!", "%", "*", "?", "&", "^"]';
+            @let passwordLengthMessage = 'password must be between 6 and 15 characters';
+            @let passwordError = invalidPassword ? invalidPasswordMessage : passwordLengthMessage ;
+
+            <div *ngIf="!passwordValidators || !valueLength" [ngClass]="{'alert': !valueLength && touchValid, 'hidden': !(touchValid && requiredError)}" >
+                <small>  
+                    password is required
+                </small>
             </div>
-            <div class="alert" *ngIf="loginForm.get('password')?.dirty && loginForm.get('password')?.invalid">
-                <div *ngIf="loginForm.get('password')?.errors?.['invalidPassword'] ">
-                   <small>
-                         Enter valid password, 
-                        <br>should atleast have 1 UpperCase letter,1 Number and 
-                        1 special character 
-                        ["&#64;", "$", ".","#", "!", "%", "*", "?", "&", "^"] 
-                    </small>
-                </div>
-                <div *ngIf="loginForm.get('password')?.errors?.['minlength'] ">
-                    <small>
-                        password must be atleast 6 characters and at most 15 chaacters
-                    </small>  
-                </div>
+
+            <div *ngIf="valueLength && passwordValidators" [ngClass]="{'alert': valueLength && dirtyValid , 'hidden': !(valueLength && dirtyValid )}" >
+                <small>
+                        {{passwordError}}
+                </small> 
             </div>
         </div>
 
-        <div *ngIf="message || loginForm.get('password')?.dirty" class="alert poppins-light ">{{message}}</div>
+        <div *ngIf="message && !pass?.dirty" class="alert poppins-light">{{message}}</div>
 
         <div class="button">
             <input [disabled]="!loginForm.valid" type="submit" id="submit" value="login">

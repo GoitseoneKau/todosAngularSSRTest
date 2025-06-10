@@ -1,7 +1,7 @@
 import { UsersService } from './../../services/users.service';
-import { CommonModule, NgIf } from '@angular/common';
+import { CommonModule, NgClass, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { User } from '../../types/user';
@@ -11,7 +11,7 @@ import { PasswordValidator } from '../../customValidators/password-validator';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule,NgIf],
+  imports: [ReactiveFormsModule,NgIf,NgClass],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -30,10 +30,13 @@ export class LoginComponent {
       ]),
       password:new FormControl("",[
         Validators.required,
+        Validators.minLength(6),
         PasswordValidator.passwordValidator()//custom password validator
       ])
     })
   }
+
+
 
 
   login(){//login function
@@ -45,6 +48,7 @@ export class LoginComponent {
 
     this.UserService.checkUser(email,password)
     .then((check_data)=>{
+       this.loginForm.reset()
      if(check_data.exists){
        const user = check_data.user as User
     

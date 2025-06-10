@@ -57,7 +57,7 @@ router.post('/users',(request,response)=>{//get is a request fuction from client
 
     if(user){
         users.users.push(user)
-        response.json(users)//201 'Created' - Indicates that the request has succeeded and a new resource has been created as a result.
+        response.json(user)//201 'Created' - Indicates that the request has succeeded and a new resource has been created as a result.
     }else{
         response.json({message:"user not created"})
     }
