@@ -25,10 +25,10 @@
     
         <div class="form-group">
 
-           
+           @let pass = loginForm.get("password");
             <label for="password">Password :
                 <input  [class.ng-invalid]="pass?.touched"
-                    type="password" id="password"  name="password" (change)="onPasswordChange($event)"
+                    type="password" id="password"  name="password" 
                     formControlName="password">
             </label>
 
